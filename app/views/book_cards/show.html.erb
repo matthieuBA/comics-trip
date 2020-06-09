@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="content-wrapper">
+		<div class="item-container">
+			<div class="container">
+				<div class="col-md-12">
+					<div class="product col-md-3 service-image-left">
+							<img id="item-display" class="img-fluid" src=" <%= @book_card.book_picture %> " alt="">
+					</div>
+				</div>
+				<div class="col-md-7">
+					<div class="product-title"><%= @book_card.book_id %></div>
+					<div class="product-desc"><%= @book_card.review %></div>
+					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+					<hr>
+					<div class="product-price">$ <%= @book_card.price %></div>
+					<div class="product-stock">In Stock</div>
+          <hr>
+					<% if user_signed_in?%>
+            <div class="btn-group cart">
+							
+            </div>
+          <%end%>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="col-md-12 product-info">
+					<ul id="myTab" class="nav nav-tabs nav_tabs">
+
+						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+						<li><a href="#service-two" data-toggle="tab">TO SELL</a></li>
+						<li><a href="#service-three" data-toggle="tab">BOOK CONDITION</a></li>
+
+					</ul>
+<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade in active" id="service-one">
+							<section class="container product-info">
+								<h3><%= @book_card.review %></h3>
+							</section>
+						</div>
+					<div class="tab-pane fade" id="service-two">
+						<section class="container">
+              <h3><%= @book_card.to_sell %></h3>
+						</section>
+					</div>
+					<div class="tab-pane fade" id="service-three">
+          <section class="container">
+					<h3><%= @book_card.book_condition %></h3>
+          </section>
+					</div>
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+</div>
