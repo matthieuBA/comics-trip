@@ -16,8 +16,17 @@ ActiveRecord::Schema.define(version: 2020_06_09_163039) do
   enable_extension "plpgsql"
 
   create_table "book_cards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.decimal "price"
+    t.string "to_sell"
+    t.string "book_condition"
+    t.string "book_picture"
+    t.text "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_cards_on_book_id"
+    t.index ["user_id"], name: "index_book_cards_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
