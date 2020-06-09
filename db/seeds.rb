@@ -12,38 +12,6 @@ BookCard.destroy_all
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vendable", "commenté", "recherché"]
-pictures = ["https://www.bedetheque.com/media/Couvertures/kaamelott01.jpg",
-"https://www.bedetheque.com/media/Couvertures/kaamelott02.jpg",
-"https://www.bedetheque.com/media/Couvertures/kaamelot03_80683.jpg",
-"https://www.bedetheque.com/media/Couvertures/KAAMELOTT_04_98245.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_118522.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_146768.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_189466.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_318330.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_392758.jpg",
-"https://www.bedetheque.com/media/Couvertures/Kaarib01_20012002.jpg",
-"https://www.bedetheque.com/media/Couvertures/kaarib2.JPG",
-"https://www.bedetheque.com/media/Couvertures/Kaarib3_18112004.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395811.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395812.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395813.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395814.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395815.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395816.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395817.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395818.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395819.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395820.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395821.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395822.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395823.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395824.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395825.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395826.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395827.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395828.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395829.jpg",
-"https://www.bedetheque.com/media/Couvertures/Couv_395830.jpg"]
 
 20.times do |i|
   u=User.create(password:"not_blank",email:Faker::Internet.email)
