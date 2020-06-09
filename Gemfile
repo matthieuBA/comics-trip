@@ -67,3 +67,7 @@ gem 'devise'
 gem 'bootstrap-sass' 
 
 gem 'jquery-rails'
+
+gem "faker", "~> 2.12"
+
+gem "table_print", "~> 1.5"
