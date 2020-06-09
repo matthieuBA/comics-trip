@@ -1,3 +1,4 @@
 class BookCard < ApplicationRecord
-  
-end
+  belongs_to :user
+  belongs_to :book
+  end
