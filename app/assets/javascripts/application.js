@@ -10,7 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+  $("form#sign_in_user")
+      .on("ajax:success", function(event, xhr, settings) {
+          $('#myModal').modal('hide');
+          //force page reload because Devise user_signed_in? state is never updated
+          setTimeout(function(){location.reload();}, 300);            
+      });
+});

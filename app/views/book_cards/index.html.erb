@@ -1,0 +1,25 @@
+<div class="mx-auto" style="margin-top: 5rem; width: 500px;">
+  <h1> Bienvenue sur Comics trip</h1>
+</div>
+
+<!-- Boucle pour presenter tous les Items -->
+<div class="container">
+  <div class="card-columns" style="margin-top: 5rem;">
+    <% BookCard.all.each do |book_card| %>
+      <p>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src=" <%= book_card.book_picture %> " alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= book_card.book_id %></h5>
+          <h5 class="card-title"><%= book_card.user_id %></h5>
+          <p class="card-text"><%= book_card.to_sell %></p>
+          <p class="card-text"><%= book_card.book_condition %></p>
+          <p class="card-text"><%= book_card.review %></p>
+          <h6 class="card-subtitle mb-2 text-muted"><%= book_card.price %></h6>
+          <%= button_to "product", book_card_path(book_card.id), method: :get , class: "btn btn-info" %>
+        </div>
+      </div>
+      </p>
+    <% end %>
+  </div>
+</div>
