@@ -1,5 +1,5 @@
 class BookCardsController < ApplicationController
-  before_create :isbn_exist!
+  before_action :isbn_exist!, only: [:create]
 
   def show
     @book_card = BookCard.find_by(id: params[:id])
@@ -13,7 +13,7 @@ class BookCardsController < ApplicationController
     @book_card = BookCard.new(book_card_params)
     if @book_card.save
       flash[:success] = "Le livre a été créé avec succès."
-      redirect_to book_cards_path(@book.id)
+      redirect_to book_cards_path(@book_card.id)
     else
       flash[:error] = "Ca sent la vieille trace de pneu pour toi mon coco..."
       render 'new'

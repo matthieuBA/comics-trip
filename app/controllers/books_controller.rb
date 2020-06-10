@@ -24,7 +24,6 @@ class BooksController < ApplicationController
           redirect_to new_book_path
         end
           @book=Book.find_by(isbn: isbn)
-        end
     end
 
       
@@ -33,9 +32,8 @@ class BooksController < ApplicationController
 
 
 
-private
-    def book_params
-        params.require(:book).permit(:title, :author, :genre, :isbn, :picture, :abstract, :extract)
-    end
+  private
+      def book_params
+          params.require(:book).permit(:title, :author, :genre, :isbn, :picture, :abstract, :extract)
+      end
 end
-
