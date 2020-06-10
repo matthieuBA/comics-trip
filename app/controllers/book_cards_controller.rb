@@ -11,20 +11,49 @@ class BookCardsController < ApplicationController
   end
 
   def create
+    @isbn = book_card_params[:book_id]
 
-    @book= BooksController.new.isbn_exist("123456789123")
-    @book_card = BookCard.new(book_card_params)
-    if @book_card.save
-      flash[:success] = "Le livre a été créé avec succès."
-      redirect_to book_cards_path(@book_card.id)
+    # puts " # "*50
+    # puts book_card_params[:book_id]
+    # puts " # "*50
+
+    if Book.isbn_exist(@isbn)
+      puts "ok tout marche"
+      @book = Book.find_by(isbn: @isbn)
+
+      puts " # "*50
+      puts @book.id
+      puts " # "*50
+
+      params[:book_card][:book_id] = @book.id
+
+      puts " # "*50
+      puts book_card_params[:book_id] 
+      puts " # "*50
+
+      @book_card = BookCard.new(book_card_params)
+
+      if @book_card.save
+        flash[:success] = "Le livre a été créé avec succès."
+        redirect_to book_cards_path(@book_card.id)
+      else
+        flash[:error] = @book_card.errors.messages
+        render 'new'
+      end
     else
-      flash[:error] = "Ca sent la vieille trace de pneu pour toi mon coco..."
-      render 'new'
+      puts "rien trouvé"
+      redirect_to new_book_path
     end
+
   end
 
   private
   def book_card_params
-      params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
+
+    params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
+
+    # puts " # "*50
+    # puts params
+    # puts " # "*50
   end
 end
