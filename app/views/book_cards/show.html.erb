@@ -15,6 +15,10 @@
 					<div class="product-price">$ <%= @book_card.price %></div>
 					<div class="product-stock">In Stock</div>
           <hr>
+
+          <td><%= button_to "remove", book_card_path(id: @book_card.id), method: :delete , class: "btn btn-info"%></td>
+
+
 					<% if user_signed_in?%>
             <div class="btn-group cart">
 							

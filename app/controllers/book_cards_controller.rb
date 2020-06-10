@@ -47,6 +47,12 @@ class BookCardsController < ApplicationController
 
   end
 
+  def destroy
+    @book_card = BookCard.find_by(id: params[:id])
+    @book_card.destroy
+    redirect_to book_cards_path
+  end
+  
   private
   def book_card_params
     params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
