@@ -47,7 +47,10 @@ class BookCardsController < ApplicationController
 
   end
 
-  def delete
+  def destroy
+    @book_card = BookCard.find_by(id: params[:id])
+    @book_card.destroy
+    redirect_to book_cards_path
   end
   
   private
