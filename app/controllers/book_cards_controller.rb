@@ -1,5 +1,6 @@
 class BookCardsController < ApplicationController
-  before_action :isbn_exist!, only: [:create]
+  
+  #before_action :isbn_exist, only: [:create]
 
   def show
     @book_card = BookCard.find_by(id: params[:id])
@@ -10,6 +11,8 @@ class BookCardsController < ApplicationController
   end
 
   def create
+
+    @book= BooksController.new.isbn_exist("123456789123")
     @book_card = BookCard.new(book_card_params)
     if @book_card.save
       flash[:success] = "Le livre a été créé avec succès."

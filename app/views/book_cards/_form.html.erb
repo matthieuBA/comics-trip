@@ -1,1 +1,64 @@
-<%= form_with(model: book_card, local: true) do |form| %>
+<%= form_with(model: @book_card, local: true) do |form| %>
+  <% if @book_card.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h2><%= pluralize(@book_card.errors.count, "error") %> prohibited this book_card from being saved:</h2>
+
+      <ul>
+      <% @book_card.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+  <% end %>
+
+
+
+  <div class="form-row">
+    <div class="field form-group col-8">
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :book_id %>
+      <%= form.text_field :book_id, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group">
+      <%= form.label :price %>
+      <%= form.text_area :price, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :to_sell %>
+      <%= form.text_field :to_sell, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :book_condition %>
+      <%= form.text_field :book_condition, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :book_picture %>
+      <%= form.text_field :book_picture, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :review %>
+      <%= form.text_field :review, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
