@@ -23,6 +23,9 @@ class BookCardsController < ApplicationController
     end
   end
 
+  def delete
+  end
+  
   private
   def book_card_params
       params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
