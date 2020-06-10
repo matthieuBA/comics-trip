@@ -3,7 +3,9 @@ class BookCardsController < ApplicationController
   #before_action :isbn_exist, only: [:create]
 
   def show
+    
     @book_card = BookCard.find_by(id: params[:id])
+    @book_card.punch(request)
   end
 
   def new
