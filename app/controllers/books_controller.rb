@@ -17,6 +17,22 @@ class BooksController < ApplicationController
       end
     end
     
+    def isbn_exist(isbn)
+      render 
+        if Book.find_by(isbn: isbn).nil?
+          Book.new(book_params)
+          redirect_to new_book_path
+        end
+          @book=Book.find_by(isbn: isbn)
+        end
+    end
+
+      
+
+
+
+
+
 private
     def book_params
         params.require(:book).permit(:title, :author, :genre, :isbn, :picture, :abstract, :extract)
