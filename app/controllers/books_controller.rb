@@ -18,12 +18,17 @@ class BooksController < ApplicationController
     end
     
     def isbn_exist(isbn)
-      render 
+      @book = Book.new(isbn: "123456789123")
         if Book.find_by(isbn: isbn).nil?
-          Book.new(book_params)
-          redirect_to new_book_path
+          puts "BOOK MUST BE CREATED"
+          # Book.new(book_params)
+          
+          # redirect_to book_cards_path
+          # render 'new'
         end
           @book=Book.find_by(isbn: isbn)
+          puts "THE BOOK WITH THIS ISBN WAS FOUND"
+          return @book
     end
 
       
