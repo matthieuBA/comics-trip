@@ -71,3 +71,5 @@ gem 'jquery-rails'
 gem "faker", "~> 2.12"
 
 gem "table_print", "~> 1.5"
+
+gem "punching_bag"

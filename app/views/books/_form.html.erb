@@ -1,0 +1,75 @@
+<%= form_with(model: @book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+  <% end %>
+
+
+  <div class="form-row">
+    <div class="field form-group col-8">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :author %>
+      <%= form.text_field :author, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group">
+      <%= form.label :genre %>
+      <%= form.text_area :genre, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :isbn %>
+      <%= form.text_field :isbn, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :picture %>
+      <%= form.text_field :picture, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :abstract %>
+      <%= form.text_field :abstract, class: 'form-control' %>
+    </div>
+  </div>
+
+    <div class="field form-group col-4">
+      <%= form.label :extract %>
+      <%= form.text_field :extract, class: 'form-control' %>
+    </div>
+  </div>
+
+
+  <div class="field form-group">
+    <%= form.label :price %>
+    <%= form.number_field :price, within: 0...1000 %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+
+

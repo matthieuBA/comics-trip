@@ -1,0 +1,18 @@
+<% if @book_card.errors.any? %>
+ <div class="alert alert-danger" role="alert">
+   <p>Book Card creation process failed due to:</p>
+     <ul>
+     <% @book_card.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ </div>
+<% end %>
+
+
+<h1>New Book Card</h1>
+
+<%= render 'form', book: @book_card %>
+
+<%= link_to 'Back', book_cards_path %>
+
