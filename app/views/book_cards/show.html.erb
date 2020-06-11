@@ -31,26 +31,26 @@
 			<div class="col-md-12 product-info">
 					<ul id="myTab" class="nav nav-tabs nav_tabs">
 
-						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+						<li><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
 						<li><a href="#service-two" data-toggle="tab">TO SELL</a></li>
 						<li><a href="#service-three" data-toggle="tab">BOOK CONDITION</a></li>
 
 					</ul>
-<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade in active" id="service-one">
-							<section class="container product-info">
+			<div id="myTabContent" class="tab-content">
+						<div class="container tab-pane active" id="service-one">
+							<section class="container">
 								<h3><%= @book_card.review %></h3>
 								<h3><%= user.email %></h3>
 								Number of views: <%= @book_card.hits %>
 							</section>
 						</div>
-					<div class="tab-pane fade" id="service-two">
+					<div class="container tab-pane fade" id="service-two">
 						<section class="container">
               <h3><%= @book_card.to_sell %></h3>
               <h3><%= user.email %></h3>
 						</section>
 					</div>
-					<div class="tab-pane fade" id="service-three">
+					<div class="container tab-pane fade" id="service-three">
           <section class="container">
 					<h3><%= @book_card.book_condition %></h3>
 					<h3><%= user.email %></h3>
