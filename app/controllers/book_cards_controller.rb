@@ -1,6 +1,6 @@
 class BookCardsController < ApplicationController
   
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:index, :show]
   
   def show
     @book_card = BookCard.find_by(id: params[:id])
