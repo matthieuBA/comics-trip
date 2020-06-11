@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-  default from: 'comics.trip.contact@gmail.com'
+  default from: 'comics_trip_contact@yopmail.com'
 
   def welcome_email(user)
 
