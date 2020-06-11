@@ -1,66 +1,74 @@
 <%user=User.find_by(id: @book_card.user_id) %>
 <%book=Book.find_by(id: @book_card.book_id)%>
-<div class="container-fluid">
+<div class="container-fluid; mt-5">
     <div class="content-wrapper">
-		<div class="item-container">
-			<div class="container">
-				<div class="col-md-12">
-					<div class="product col-md-3 service-image-left">
-							<img id="item-display" class="img-fluid" src=" <%= @book_card.book_picture %> " alt="">
-					</div>
-				</div>
-				<div class="col-md-7">
-					<div class="product-title"><%= book.title %></div>
-					<div class="product-desc"><%= @book_card.review %></div>
-					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
-					<hr>
-					<div class="product-price">$ <%= @book_card.price %></div>
-					<div class="product-stock">In Stock</div>
-          <hr>
+        <div class="item-container">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="product col-md-3 service-image-left">
+                        <img id="item-display" class="img-fluid" src=" <%= @book_card.book_picture %> " alt=""></div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="product-title"><%= book.title %></div>
+                        <div class="product-desc"><%= @book_card.review %></div>
+                        <div class="product-rating">
+                            <i class="fa fa-star gold"></i>
+                            <i class="fa fa-star gold"></i>
+                            <i class="fa fa-star gold"></i>
+                            <i class="fa fa-star gold"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <hr>
+                            <div class="product-price">$
+                                <%= @book_card.price %></div>
+                            <div class="product-stock">In Stock</div>
+                            <hr>
 
-          <td><%= button_to "remove", book_card_path(id: @book_card.id), method: :delete , class: "btn btn-info"%></td>
-
-
-					<% if user_signed_in?%>
-            <div class="btn-group cart">
-							
-            </div>
-          <%end%>
-				</div>
-			</div>
-		</div>
-		<div class="container-fluid">
-			<div class="col-md-12 product-info">
-					<ul id="myTab" class="nav nav-tabs nav_tabs">
-
-						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-						<li><a href="#service-two" data-toggle="tab">TO SELL</a></li>
-						<li><a href="#service-three" data-toggle="tab">BOOK CONDITION</a></li>
-
-					</ul>
-<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade in active" id="service-one">
-							<section class="container product-info">
-								<h3><%= @book_card.review %></h3>
-								<h3><%= user.email %></h3>
-								Number of views: <%= @book_card.hits %>
-							</section>
-						</div>
-					<div class="tab-pane fade" id="service-two">
-						<section class="container">
-              <h3><%= @book_card.to_sell %></h3>
-              <h3><%= user.email %></h3>
-						</section>
-					</div>
-					<div class="tab-pane fade" id="service-three">
-          <section class="container">
-					<h3><%= @book_card.book_condition %></h3>
-					<h3><%= user.email %></h3>
-          </section>
-					</div>
-				</div>
-				<hr>
-			</div>
-		</div>
-	</div>
-</div>
+                                <% if !current_user.nil? && @book_card.user_id == current_user.id %>
+                                    <div class="container">
+                                        <%= button_to "remove", book_card_path(id: @book_card.id), method: :delete, class: "btn btn-danger"%>
+                                        <%= button_to "edit", edit_book_card_path(id: @book_card.id), method: :get, class: "btn btn-info"%>
+                                    </div>
+                                    <%end%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="col-md-12 product-info">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#service-one">DESCRIPTION</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#service-two">TO SELL</a>
+                                    </li>
+																		<li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#service-three">BOOK CONDITION</a>
+                                    </li>
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="container tab-pane active" id="service-one">
+                                        <section class="container">
+                                            <h3><%= @book_card.review %></h3>
+                                            <h3><%= user.email %></h3>
+                                            Number of views:
+                                            <%= @book_card.hits %>
+                                        </section>
+                                    </div>
+                                    <div class="container tab-pane fade" id="service-two">
+                                        <section class="container">
+                                            <h3><%= @book_card.to_sell %></h3>
+                                            <h3><%= user.email %></h3>
+                                        </section>
+                                    </div>
+                                    <div class="container tab-pane fade" id="service-three">
+                                        <section class="container">
+                                            <h3><%= @book_card.book_condition %></h3>
+                                            <h3><%= user.email %></h3>
+                                        </section>
+                                    </div>
+                                </div>
+                                <hr></div>
+                            </div>
+                        </div>
+                    </div>
