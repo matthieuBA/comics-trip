@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-columns" style="margin-top: 5rem; ">
-    <% BookCard.most_hit .each do |book_card| %>
+    <% BookCard.most_hit(nil, 9) .each do |book_card| %>
     <%user=User.find_by(id: book_card.user_id) %>
     <%book=Book.find_by(id: book_card.book_id)%>
 
