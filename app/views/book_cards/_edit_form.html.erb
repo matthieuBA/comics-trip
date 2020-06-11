@@ -15,52 +15,39 @@
 
   <% end %>
 
-
-
-  <div class="form-row">
-    <div class="field form-group col-8">
-      <%= form.label :user_id %>
-      <%= form.text_field :user_id, class: 'form-control' %>
-    </div>
-  </div>
-
-
-    <div class="field form-group col-8">
-      <%= form.label :isbn %>
-      <%= form.text_field :book_id, class: 'form-control' %>
-    </div>
-  </div>
-
-    <div class="field form-group">
+  <div class="flex-container">
+    <div class="field form-group col-4">
       <%= form.label :price %>
-      <%= form.text_area :price, class: 'form-control' %>
+      <%= form.text_field :price, class: 'form-control' %>
     </div>
 
     <div class="field form-group col-4">
       <%= form.label :to_sell %>
       <%= form.text_field :to_sell, class: 'form-control' %>
     </div>
-  </div>
+
 
     <div class="field form-group col-4">
       <%= form.label :book_condition %>
       <%= form.text_field :book_condition, class: 'form-control' %>
     </div>
-  </div>
+
 
     <div class="field form-group col-4">
       <%= form.label :book_picture %>
       <%= form.text_field :book_picture, class: 'form-control' %>
     </div>
-  </div>
+
 
     <div class="field form-group col-4">
       <%= form.label :review %>
       <%= form.text_field :review, class: 'form-control' %>
     </div>
-  </div>
 
-  <div class="actions">
+
+    <div class="actions col-4">
     <%= form.submit class:"btn btn-primary" %>
-  </div>
+    </div>
+        </div>
+
 <% end %>

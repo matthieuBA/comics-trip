@@ -18,8 +18,8 @@
 					<div class="product-stock">In Stock</div>
           <hr>
 
-          <td><%= button_to "remove", book_card_path(id: @book_card.id), method: :delete , class: "btn btn-info"%></td>
-
+          <td><%= button_to "remove", book_card_path(id: @book_card.id), method: :delete, class: "btn btn-info"%></td>
+          <td><%= button_to "edit", edit_book_card_path(id: @book_card.id), method: :get, class: "btn btn-info"%></td>
 
 					<% if user_signed_in?%>
             <div class="btn-group cart">
