@@ -23,19 +23,3 @@ sell = ["vendable", "commenté", "recherché"]
   p p.errors
 end
 
-# t.string "title"
-# t.string "author"
-# t.string "genre"
-# t.string "isbn"
-# t.string "picture"
-# t.text "abstract"
-# t.text "extract"
-
-
-# t.bigint "user_id"
-# t.bigint "book_id"
-# t.decimal "price"
-# t.string "to_sell"
-# t.string "book_condition"
-# t.string "book_picture"
-# t.text "review"
