@@ -19,7 +19,6 @@ sell = ["vendable", "commenté", "recherché"]
   b=Book.create(title:Faker::DcComics.title, author:Faker::Book.author, genre:Faker::Book.genre, isbn:Faker::Code.isbn, picture:"https://www.bedetheque.com/media/Couvertures/Couv_3958"+(i+10).to_s+".jpg", abstract:Faker::Quote.yoda, extract:Faker::Quote.famous_last_words)
   p "https://www.bedetheque.com/media/Couvertures/Couv_3958"+(i+10).to_s+".jpg"
   bc=BookCard.create(user_id: User.all.sample.id, book_id: Book.all.sample.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], book_picture: "https://www.bedetheque.com/media/Couvertures/Couv_3958"+(i+10).to_s+".jpg", review:Faker::Quote.famous_last_words )
-  p=Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(10))
-  p p.errors
+  p=Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
 end
 
