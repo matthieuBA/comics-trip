@@ -27,10 +27,14 @@
         <div class="row">
         
           <div class="col"><%= button_to "product", book_card_path(book_card.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
-          <div class="col">
+          
+          <% if !current_user.nil? %>
                 <% if book_card.user_id == current_user.id %>
+                <div class="col">
                 <%= button_to "remove", book_card_path(id: book_card.id), method: :delete , class: "btn btn-danger align-self-center mx-auto"%>
-              <% end %></div> 
+                </div> 
+              <% end %>
+              <% end %>
           </div>
         </div>
       </div>  
