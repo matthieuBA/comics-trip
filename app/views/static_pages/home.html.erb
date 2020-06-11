@@ -1,27 +1,2 @@
-<div class="container">
-  <div class="card-columns" style="margin-top: 5rem; ">
-    <% BookCard.most_hit(nil, 9) .each do |book_card| %>
-    <%user=User.find_by(id: book_card.user_id) %>
-    <%book=Book.find_by(id: book_card.book_id)%>
-
-
-      <div class="card" style="width: 25rem;">
-        <img class="card-img-top" style="height: 25rem;" src=" <%= book_card.book_picture %> " alt="Card image cap">
-        <div class="card-body " style="height: 25rem;">
-          <h5 class="card-title"><%=book.title%></h5>
-          <h5 class="card-title"><%=user.email %></h5>
-          <p class="card-text"><%= book_card.to_sell %></p>
-          <p class="card-text"><%= book_card.book_condition %></p>
-          <p class="card-text"><%= book_card.review %></p>
-          <h6 class="card-subtitle mb-2 text-muted"><%= book_card.price %></h6>
-
-          
-        </div>
-        <div class="text-center" >
-         <%= button_to "product", book_card_path(book_card.id), method: :get , class: "btn btn-info align-center " %>
-        </div>
-      </div>
-      </p>
-    <% end %>
-  </div>
-</div>
+    <% @book_cards=BookCard.most_hit(nil, 9) %>
+    <%= render 'book_cards/book_cards_view' %>
