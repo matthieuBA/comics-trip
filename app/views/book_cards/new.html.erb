@@ -1,6 +1,6 @@
 <% if @book_card.errors.any? %>
-  <div class="alert alert-danger" role="alert">
-    <p>Book Card creation process failed due to:</p>
+  <div class="alert alert-danger" id="alert_message" role="alert">
+    <p>La création d'une fiche a échoué en raison de :</p>
       <ul>
       <% @book_card.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -8,7 +8,7 @@
     </ul>
   </div>
 <% end %>
-<h1>New Book Card</h1>
+<h1>Nouvelle Fiche</h1>
 <%= render 'form', book: @book_card %>
 <%= link_to 'Back', book_cards_path %>
 

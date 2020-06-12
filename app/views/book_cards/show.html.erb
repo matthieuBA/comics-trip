@@ -21,7 +21,7 @@
                         <hr>
                             <div class="product-price">$
                                 <%= @book_card.price %></div>
-                            <div class="product-stock">In Stock</div>
+                            <div class="product-stock">En stock</div>
                             <hr>
 
                                 <% if !current_user.nil? && @book_card.user_id == current_user.id %>
@@ -40,10 +40,10 @@
                                         <a class="nav-link active" data-toggle="tab" href="#service-one">DESCRIPTION</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#service-two">TO SELL</a>
+                                        <a class="nav-link" data-toggle="tab" href="#service-two">ACHAT, VENTE OU CRITIQUE</a>
                                     </li>
 																		<li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#service-three">BOOK CONDITION</a>
+                                        <a class="nav-link" data-toggle="tab" href="#service-three">ETAT DU LIVRE</a>
                                     </li>
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
@@ -51,7 +51,7 @@
                                         <section class="container">
                                             <h3><%= @book_card.review %></h3>
                                             <h3><%= user.email %></h3>
-                                            Number of views:
+                                            NOMBRE DE VUES:
                                             <%= @book_card.hits %>
                                         </section>
                                     </div>
