@@ -3,22 +3,16 @@
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
       <h2><%= pluralize(@book_card.errors.count, "error") %> prohibited this book_card from being saved:</h2>
 
-      
       <% @book_card.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      
+
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
 
   <% end %>
-
-
-
-
-
 
     <div class="field form-group-sm col-4">
       <%= form.label :Isbn %>
@@ -56,5 +50,6 @@
     <%= form.submit class:"btn-sm btn-info" %>
   </div>
 <% end %>
+
 
 
