@@ -64,3 +64,4 @@ class BookCardsController < ApplicationController
     params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
   end
 end
+

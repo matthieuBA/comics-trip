@@ -1,6 +1,3 @@
-<div class="container-fluid">
-  <form>
-    <ul class="flex-outer">
 <%= form_with(model: @book_card, local: true) do |form| %>
   <% if @book_card.errors.any? %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -59,6 +56,5 @@
     <%= form.submit class:"btn-sm btn-info" %>
   </div>
 <% end %>
-    </ul>
-  </form>
-</div>
+
+
