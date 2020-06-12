@@ -24,3 +24,11 @@ $(document).ready(function(){
           setTimeout(function(){location.reload();}, 300);            
       });
 });
+
+
+  window.setTimeout(function () {
+    $("#alert_message").fadeTo(500, 0).slideUp(500, function () {
+      $(this).remove();
+    });
+  }, 5000);
+
