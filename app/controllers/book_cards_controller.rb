@@ -12,6 +12,10 @@ class BookCardsController < ApplicationController
   end
 
   def create
+    puts "# "*100
+    puts current_user.id
+    puts "# "*100
+    params[:book_card][:user_id] = current_user.id
     @isbn = book_card_params[:book_id]
     if Book.isbn_exist(@isbn)
       @book = Book.find_by(isbn: @isbn)
@@ -19,12 +23,13 @@ class BookCardsController < ApplicationController
       @book_card = BookCard.new(book_card_params)
       if @book_card.save
         flash[:success] = "Le livre a été créé avec succès."
-        redirect_to book_cards_path(@book_card.id)
+        redirect_to book_card_path(@book_card.id)
       else
         flash[:error] = @book_card.errors.messages
         render 'new'
       end
     else
+      flash[:error] = "Le livre portant l'isbn : "+book_card_params[:book_id]+" n'existe pas encore. Merci de créer la fiche du livre associé"
       redirect_to new_book_path
     end
   end
@@ -59,3 +64,4 @@ class BookCardsController < ApplicationController
     params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
   end
 end
+

@@ -1,7 +1,7 @@
 <%= form_with(model: @book_card, local: true) do |form| %>
   <% if @book_card.errors.any? %>
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <h2><%= pluralize(@book_card.errors.count, "error") %> prohibited this book_card from being saved:</h2>
+    <div class="alert alert-danger alert-dismissible fade show" id="alert_message" role="alert">
+      <h2><%= pluralize(@book_card.errors.count, "error") %> a empeché cette fiche d'être sauvegardé:</h2>
 
       <ul>
       <% @book_card.errors.full_messages.each do |message| %>
