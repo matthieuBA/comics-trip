@@ -25,7 +25,8 @@ class BookCardsController < ApplicationController
         render 'new'
       end
     else
-      redirect_to new_book_path
+      flash[:error] = "Le livre portant l'isbn : "+book_card_params[:book_id]+" n'existe pas encore. Merci de créer la fiche du livre associé"
+      redirect new_book_path
     end
   end
   
