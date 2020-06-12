@@ -1,6 +1,6 @@
 <% if @book.errors.any? %>
  <div class="alert alert-danger" role="alert">
-   <p>Book creation process failed due to:</p>
+   <p>La création du livre a échoué en raison de :</p>
      <ul>
      <% @book.errors.full_messages.each do |message| %>
        <li><%= message %></li>
@@ -10,7 +10,7 @@
 <% end %>
 
 
-<h1>New Book</h1>
+<h1>Nouveau Livre</h1>
 
 <%= render 'form', book: @book %>
 
