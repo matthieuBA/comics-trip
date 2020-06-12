@@ -25,6 +25,10 @@
     <% books.each do |result| %>  
         <%= result.title %><br>  
         <%= result.isbn %><br>  
+                            <div class="product col-md-3 service-image-left">
+                        <img id="item-display" class="img-fluid" src=" <%= result.image_link(:zoom => 1)  %> " alt=""></div>
+                    </div>
+        
     <% end %>
     <% end %>
     <%= @parameter %><br>  
