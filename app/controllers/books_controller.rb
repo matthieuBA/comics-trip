@@ -6,13 +6,17 @@ class BooksController < ApplicationController
         @book = Book.new
     end
 
+    def show
+      @book = Book.find_by_id(params[:id])
+    end
+
     def create
       @book = Book.new(book_params)
       if @book.save
         flash[:success] = "Le livre a été créé avec succès."
-        #redirect_to books_path(@book.id)
+        redirect_to book_path(@book.id)
       else
-        flash[:error] = "Ca sent la vieille trace de pneu pour toi mon coco..."
+        flash[:error] = "La création de livre a échoué"
         render 'new'
       end
     end
