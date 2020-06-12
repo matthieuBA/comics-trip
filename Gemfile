@@ -76,3 +76,5 @@ gem "table_print", "~> 1.5"
 gem "punching_bag"
 
 gem 'dotenv-rails'
+
+gem 'googlebooks'
