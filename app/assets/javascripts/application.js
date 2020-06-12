@@ -25,10 +25,4 @@ $(document).ready(function(){
       });
 });
 
-
-  window.setTimeout(function () {
-    $("#alert_message").fadeTo(500, 0).slideUp(500, function () {
-      $(this).remove();
-    });
-  }, 5000);
-
+  window.setTimeout("document.getElementById('alert_message').style.display='none';", 6000);

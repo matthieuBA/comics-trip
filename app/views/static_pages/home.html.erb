@@ -1,2 +1,7 @@
+<div class="mx-auto text-center" style="margin-top: 5rem; width: 500px;">
+  <h1>Bienvenue sur Comics trip</h1>
+  <br/>
+  <h2>Nos 9 BDs les plus vues :</h2>
+</div>   
     <% @book_cards=BookCard.most_hit(nil, 9) %>
     <%= render 'book_cards/book_cards_view' %>

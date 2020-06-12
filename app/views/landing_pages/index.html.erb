@@ -5,9 +5,20 @@
 Vendez vos occasions</p>
     
 
-    </div>
+<div class="flex-container" >
+<div class="row">
+<div class="col" >
+<td><%= button_to "Parcourir Nos Fiches De Livres »", book_cards_path, method: :get , class: "btn btn-info btn-lg"%></td>
+</div>
+<div class="col" >
+<td><%= button_to "Creer Une Nouvelle Fiches de livres »", new_book_card_path, method: :get , class: "btn btn-info btn-lg"%></td>
+</div>
+</div>
 
 </div>
-<div class="container text-center" >
-<p><a href="http://www.YourLinkHere.com" class="btn btn-info btn-lg">Learn more &raquo;</a></p>
+
 </div>
+
+</div>
+
+

@@ -1,11 +1,3 @@
-<script>
-  window.setTimeout(function () {
-    $("#alert_message").fadeTo(500, 0).slideUp(500, function () {
-      $(this).remove();
-    });
-  }, 5000);
-</script>
-
 <% flash.each do |key, value| %>
 <div id="alert_message" class="<%= flash_class(key) %>" role="alert">
   <%= value %>
