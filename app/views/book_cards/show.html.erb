@@ -16,7 +16,7 @@
                             <i class="fa fa-star gold"></i>
                             <i class="fa fa-star gold"></i>
                             <i class="fa fa-star gold"></i>
-                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star gold"></i>
                         </div>
                         <hr>
                             <div class="product-price">$
@@ -42,33 +42,41 @@
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#service-two">ACHAT, VENTE OU CRITIQUE</a>
                                     </li>
-																		<li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#service-three">ETAT DU LIVRE</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link " data-toggle="tab" href="#service-three">ETAT DU LIVRE</a>
                                     </li>
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
-                                    <div class="container tab-pane active" id="service-one">
+                                    <div class="tab-pane active" id="service-one">
                                         <section class="container">
-                                            <h3><%= @book_card.review %></h3>
-                                            <h3><%= user.email %></h3>
+                                            <p><%= @book_card.review %></p>
+                                            <p><%= user.email %></p>
                                             NOMBRE DE VUES:
                                             <%= @book_card.hits %>
                                         </section>
                                     </div>
-                                    <div class="container tab-pane fade" id="service-two">
+                                    <div class="tab-pane fade" id="service-two">
                                         <section class="container">
-                                            <h3><%= @book_card.to_sell %></h3>
-                                            <h3><%= user.email %></h3>
+                                            <p><%= @book_card.to_sell %></p>
+                                            <p><%= user.email %></p>
+                                            NOMBRE DE VUES:
+                                            <%= @book_card.hits %>
                                         </section>
                                     </div>
-                                    <div class="container tab-pane fade" id="service-three">
+                                    <div class="tab-pane fade" id="service-three">
                                         <section class="container">
-                                            <h3><%= @book_card.book_condition %></h3>
-                                            <h3><%= user.email %></h3>
+                                            <p><%= @book_card.book_condition %></p>
+                                            <p><%= user.email %></p>
+                                            NOMBRE DE VUES:
+                                            <%= @book_card.hits %>
                                         </section>
                                     </div>
                                 </div>
-                                <hr></div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>    
+        </div>    
+    </div>
+</div>
