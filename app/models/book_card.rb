@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class BookCard < ApplicationRecord
   belongs_to :user
   belongs_to :book
