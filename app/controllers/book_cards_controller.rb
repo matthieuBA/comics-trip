@@ -5,6 +5,8 @@ class BookCardsController < ApplicationController
   def show
     @book_card = BookCard.find_by(id: params[:id])
     @book_card.punch(request)
+    @user = User.find_by(id: @book_card.user_id)
+    @book = Book.find_by(id: @book_card.book_id)
   end
 
   def new
@@ -12,9 +14,6 @@ class BookCardsController < ApplicationController
   end
 
   def create
-    puts "# "*100
-    puts current_user.id
-    puts "# "*100
     params[:book_card][:user_id] = current_user.id
     @isbn = book_card_params[:book_id]
     if Book.isbn_exist(@isbn)
