@@ -9,9 +9,11 @@
             <% else %>
               <p>Il n'y a pas d'image pour ce livre</p>
             <% end %>
-            <%= form_tag book_card_book_pictures_path(@book_card), multipart: true do %>
-              <%= file_field_tag :book_picture %>
-              <%= submit_tag "mettre à jour" %>
+            <% if !current_user.nil? && @book_card.user_id == current_user.id %>
+              <%= form_tag book_card_book_pictures_path(@book_card), multipart: true do %>
+                <%= file_field_tag :book_picture %>
+                <%= submit_tag "mettre à jour" %>
+              <% end %>
             <% end %>
           </div>
           <div class="col-md-7">
