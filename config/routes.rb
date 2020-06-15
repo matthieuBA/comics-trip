@@ -8,5 +8,5 @@ resources :book_cards
 resources :books
 resources :landing_pages, only: [:index]
 resources :google_books, only: [:index]
-
+resources :private_messages
 end

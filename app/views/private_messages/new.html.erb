@@ -1,0 +1,18 @@
+<% if @private_message.errors.any? %>
+ <div class="alert alert-danger" role="alert">
+   <p>La création du message a échoué en raison de :</p>
+     <ul>
+     <% @private_message.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+   </ul>
+ </div>
+<% end %>
+
+
+<h1>Nouveau Message</h1>
+
+<%= render 'form', private_message: @private_message %>
+
+<%= link_to 'Back', private_messages_path %>
+
