@@ -82,3 +82,6 @@ gem 'image_processing'
 
 # API Google books
 gem 'googlebooks'
+
+# OAuth
+gem 'omniauth-google-oauth2'
