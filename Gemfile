@@ -77,4 +77,8 @@ gem "punching_bag"
 
 gem 'dotenv-rails'
 
+# Resizing images with Active storage
 gem 'image_processing'
+
+# API Google books
+gem 'googlebooks'
