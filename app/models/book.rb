@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   has_many :book_cards
   has_many :users, through: :book_cards
 
+  # Active Storage
+  has_one_attached :picture
       
   def self.isbn_exist(isbn)
       if Book.find_by(isbn: isbn).nil?
