@@ -10,11 +10,15 @@ User.destroy_all
 Book.destroy_all
 BookCard.destroy_all
 Punch.destroy_all
+PrivateMessage.destroy_all
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vendable", "commenté", "recherché"]
 titles = ["Blacksad","Astérix","La quête de l'oiseau du temps","XIII","Gaston","Tintin","Thorgal","Lanfeust de Troy","Murena","De Cape et de Crocs","Largo Winch","Peter Pan","Spirou et Fantasio","Blueberry","Le combat ordinaire","Universal War One","Aldébaran","Les passagers du vent","Blake et Mortimer","Lucky Luke","Le grand pouvoir du Chninkel","Le troisième Testament","Le scorpion","Idées noires Humour","Sillage","Djinn","Long John Silver","Maus","Corto Maltese","Le tueur","Les tuniques Bleues","Okko","Soda","Magasin général","Le cycle de Cyann","L'incal - Une aventure de John Difool","Le retour à la terre","Où le regard ne porte pas...","Le sursis","Calvin et Hobbes","Sambre","Complainte des Landes perdues Heroic","Les 7 Vies de l'Épervier","Nikopol","Bételgeuse","Garulfo","Il était une fois en France","Valérian","Le décalogue","Le chant des Stryges","Jeremiah","Rapaces ","Bouncer","Quartier","Le vol du corbeau","Alim le tanneur","Le triangle Secret","Chi","Rubrique-à-Brac","Watchmen","L'Épervier","Trolls de Troy","Golden City","Les compagnons du crépuscule","Walking Dead","La caste des Méta-Barons","Donjon Zénith","Les maîtres de l'Orge","Aquablue","V pour Vendetta","Les cités obscures","Gil Jourdan","Sin City","Berceuse assassine","Durango","Johan et Pirlouit","Légendes des contrées oubliées","Yoko Tsuno","Balade au Bout du monde","Persepolis","Le prince de la Nuit","Servitude","La vengeance du Comte Skarbek","La guerre éternelle","Les schtroumpfs","S.O.S. Bonheur","Travis","Achille Talon","Sanctuaire","Jérôme K. Jérôme Bloche","Le pouvoir des Innocents","Carmen Mc Callum","La nef des fous","Le vent dans les Saules","Zoo","Lapinot","Monster","La licorne","Lincoln","Les bidochon","I.R.$."]
 books = []
+
+
+u=User.create(password:"not_blank",email:"admin@admin.com")
 
 img = [ "/home/melvin/Documents/code/THP/travail/projet_final/comics-trip/vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
 "/home/melvin/Documents/code/THP/travail/projet_final/comics-trip/vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
@@ -22,8 +26,13 @@ img = [ "/home/melvin/Documents/code/THP/travail/projet_final/comics-trip/vendor
 "/home/melvin/Documents/code/THP/travail/projet_final/comics-trip/vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"
 ]
 
-5.times do |i|
+10.times do |i|
+  u_last = User.last
+
   u=User.create(password:"not_blank",email:Faker::Internet.email)
+  pm= PrivateMessage.create(sender: u, recipient: u_last, content:Faker::Internet.email)
+  pm= PrivateMessage.create(sender: u_last, recipient: u, content:Faker::Internet.email)
+  
 p i+1 
 
 puts " users created"

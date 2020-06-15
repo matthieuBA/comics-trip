@@ -17,5 +17,5 @@ resources :landing_pages, only: [:index]
 
 resources :google_books, only: [:index]
 
-resources :landing_pages, only: [:index]
-end
+resources :private_messages
+
