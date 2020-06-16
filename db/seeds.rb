@@ -24,10 +24,10 @@ puts "TITLES nb = "
 puts titles.count
 
 out = []
-img = ["vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
-       "vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
-       "vendor/img/miika-laaksonen-nUL9aPgGvgM-unsplash.jpg",
-       "vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"]
+img = ["#{Rails.root}/vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
+       "#{Rails.root}/vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
+       "#{Rails.root}/vendor/img/miika-laaksonen-nUL9aPgGvgM-unsplash.jpg",
+       "#{Rails.root}/vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"]
 
 books = []
 nb = 0
