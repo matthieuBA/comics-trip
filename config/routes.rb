@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 root to: "static_pages#home"
 
 devise_for :users
-resources :users, only: [:show]
+resources :users, only: [:show] do
+  resources :money_pots, only: [:show, :edit]
+end
 
 resources :index
 
