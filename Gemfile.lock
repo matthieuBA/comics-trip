@@ -93,7 +93,6 @@ GEM
     execjs (2.7.0)
     faker (2.12.0)
       i18n (>= 1.6, < 2)
-    fastimage (2.1.7)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -251,7 +250,6 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker (~> 2.12)
-  fastimage
   googlebooks
   image_processing
   jbuilder (~> 2.5)
