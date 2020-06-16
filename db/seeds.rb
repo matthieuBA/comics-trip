@@ -85,7 +85,7 @@ titles.count.times do |o|
           if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
             colorg { p book.categories }
 
-            picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0&edge=curl&source=gbs_api.jpeg"
+            picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
             # picture = book.image_link(:zoom => 0)
 
             puts "ˇ" * 100
