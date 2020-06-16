@@ -26,6 +26,7 @@
         Mon compte / Se déconnecter
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="<%= private_messages_path %>">Mes Messages</a>
           <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
           <a class="dropdown-item" href="<%=  destroy_user_session_path %>" data-method="DELETE">Se déconnecter</a>
         </div>

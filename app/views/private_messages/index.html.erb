@@ -1,0 +1,18 @@
+        
+        <% @send_messages.each do |message| %>
+            <% @message=message %>
+            SEND
+            <%= render 'header' %>
+            <%= render 'message_button' %>
+            <%= render 'delete_button' %>
+
+            
+        <%end%>
+        
+        <% @received_messages.each do |message| %>
+        RECEIVED
+            <% @message=message %>
+            <%= render 'header' %>
+            <%= render 'message_button' %>
+            <%= render 'delete_button' %>
+        <%end%>

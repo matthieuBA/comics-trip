@@ -5,15 +5,25 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
   # mailer "welcome"
-  after_create :welcome_send
+  after_create :welcome_send, :create_money_pot
 
   has_many :book_cards
   has_many :books, through: :book_cards
 
+  has_one :money_pot
+
   # mailer "welcome"
   after_create :welcome_send
 
+  #private message
+  has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
+  has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
+
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
+  end
+
+  def create_money_pot
+    MoneyPot.create(user_id: self.id, money: 50)
   end
 end
