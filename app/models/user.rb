@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # mailer "welcome"
-  after_create :welcome_send
+  after_create :welcome_send, :create_money_pot
 
   has_many :book_cards
   has_many :books, through: :book_cards
@@ -20,5 +20,9 @@ class User < ApplicationRecord
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
+  end
+
+  def create_money_pot
+    MoneyPot.create(user_id: self.id, money: 0)
   end
 end
