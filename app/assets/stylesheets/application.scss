@@ -5219,6 +5219,17 @@
        flex-shrink: 0;
    width: 100%;
  }
+
+ .card-img-top-views {
+  // position: absolute;
+  height: auto;
+  max-height: 100%;
+  width: auto;
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
  
  .card-img,
  .card-img-top {
