@@ -62,7 +62,7 @@ titles.count.times do |o|
   time = Benchmark.measure {
     puts titles[o]
     title = titles[o]
-    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 10, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
+    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 2, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
     books.each_with_index do |book, index|
       nb_total += 1
       puts "#{index + 1} times searched book #{o + 1} with #{nb_total} search requests on #{nb} created books"
