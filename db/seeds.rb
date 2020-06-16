@@ -17,7 +17,7 @@ Punch.destroy_all
 PrivateMessage.destroy_all
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
-sell = ["vendable", "commenté", "recherché"]
+sell = ["vente", "achat", "critique"]
 
 titles = ["Blacksad", "La quête de l'oiseau du temps", "Thorgal", "Lanfeust de Troy", "Murena", "Largo Winch", "Spirou et Fantasio", "Le combat ordinaire", "Universal War One", "Aldébaran", "Blake et Mortimer", "Lucky Luke", "Le grand pouvoir du Chninkel", "Le troisième Testament", "Corto Maltese", "Le tueur", "Les tuniques Bleues", "Okko", "Soda", "Magasin général", "Le retour à la terre", "Où le regard ne porte pas...", "Sambre", "Complainte des Landes perdues Heroic", "Les 7 Vies de l'Épervier", "Nikopol", "Bételgeuse", "Valérian", "Le chant des Stryges", "Bouncer", "Le vol du corbeau", "Alim le tanneur", "L'Épervier", "Trolls de Troy", "Golden City", "Walking Dead", "Donjon Zénith", "Aquablue", "Les cités obscures", "Berceuse assassine", "Durango", "Légendes des contrées oubliées", "Balade au Bout du monde", "Le prince de la Nuit", "La vengeance du Comte Skarbek", "Les schtroumpfs", "S.O.S. Bonheur", "Travis", "Achille Talon", "Jérôme K. Jérôme Bloche", "Le pouvoir des Innocents", "Carmen Mc Callum", "La nef des fous", "Lapinot", "Monster", "I.R.$.", "Léonard"]
 puts "TITLES nb = "
