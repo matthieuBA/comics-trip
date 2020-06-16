@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 devise_for :users
 resources :users, only: [:show] do
   resources :money_pots, only: [:show, :edit]
+end
 
   resources :index
 
