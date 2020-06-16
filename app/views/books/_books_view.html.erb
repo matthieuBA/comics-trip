@@ -4,7 +4,7 @@
         <% @books.each do |book| %>
             <div class="card col col-auto" style="width: 33rem; margin: 1rem 1rem 1rem 1rem;">
                 <% unless book.picture.nil? %>
-                <img class="card-img-top" style="margin-top:1rem; margin-bottom:20rem" src="<%= book.picture%>" alt="Card image cap">
+                <img class="card-img-top display:block" style="margin-top:1rem; margin-bottom:20rem" src="<%= book.picture%>" alt="Card image cap">
                 <% else %>
                     <img class="card-img-top" style="height: auto; width:100;margin-top:1rem; padding-bottom:33rem" src="" alt="Card image cap">
                     <% end %>
