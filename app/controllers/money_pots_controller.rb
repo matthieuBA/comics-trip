@@ -5,7 +5,6 @@ class MoneyPotsController < ApplicationController
 
     if @book_card.to_sell == "vendable"
       buy
-      redirect_to root_path
     end
   end
 
@@ -18,9 +17,17 @@ class MoneyPotsController < ApplicationController
     buyer_money_pot = MoneyPot.find_by(user_id: buyer.id)
     seller_money_pot = MoneyPot.find_by(user_id: seller.id)
 
-    buyer_money_pot.money -= @book_card.price
-    buyer_money_pot.save
-    seller_money_pot.money += @book_card.price
-    seller_money_pot.save
+    if buyer_money_pot.money >= @book_card.price
+      buyer_money_pot.money -= @book_card.price
+      buyer_money_pot.save
+      seller_money_pot.money += @book_card.price
+      seller_money_pot.save
+
+      flash[:success] = "L'achat à bien été effectué"
+      redirect_to book_cards_path
+    else
+      flash[:error] = "Vous n'avez pas assez d'argent sur votre cagnotte !"
+      redirect_to book_card_path(@book_card.id)
+    end
   end
 end
