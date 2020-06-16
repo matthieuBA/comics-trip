@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :book_cards
   has_many :books, through: :book_cards
 
+  has_one :money_pot
+
   # mailer "welcome"
   after_create :welcome_send
 
