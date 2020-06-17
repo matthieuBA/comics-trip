@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_164105) do
+ActiveRecord::Schema.define(version: 2020_06_16_100900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_06_15_164105) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "joins", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "book_card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_card_id"], name: "index_joins_on_book_card_id"
+    t.index ["tag_id"], name: "index_joins_on_tag_id"
+  end
+
   create_table "private_messages", force: :cascade do |t|
     t.bigint "recipient_id"
     t.bigint "sender_id"
@@ -82,6 +91,12 @@ ActiveRecord::Schema.define(version: 2020_06_15_164105) do
     t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -90,11 +105,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_164105) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
