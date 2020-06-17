@@ -48,7 +48,6 @@ class BookCardsController < ApplicationController
     else
       flash.alert = "Impossible d'éditer la fiche"
       render :edit
-      flash.alert = nil
     end
   end
 
@@ -56,6 +55,21 @@ class BookCardsController < ApplicationController
     @book_card = BookCard.find(params[:id])
     @book_card.destroy
     redirect_to book_cards_path
+  end
+
+  def index    
+    if params[:search]
+      @book_cards = BookCard.search(params[:search])
+      if @book_cards.empty?
+        @book_cards = BookCard.all
+        flash.notice = "Aucune recherche ne correspond à vos critères"
+        render :index
+      else
+        @book_cards
+      end
+    else
+      @book_cards = BookCard.all
+    end
   end
   
   private
@@ -68,5 +82,4 @@ class BookCardsController < ApplicationController
     tag = Tag.find_by(title:params[:book_card][:tag])
     Join.create(book_card_id:BookCard.last.id, tag_id:tag.id)
   end
-
 end
