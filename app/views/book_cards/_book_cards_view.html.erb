@@ -22,6 +22,12 @@
         <div class="row"  style="position: absolute;bottom: 0;">
           <div class="col"><%= button_to "product", book_card_path(book_card.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
           <% if !current_user.nil? %>
+            <% @user=User.find_by_id(book_card.user_id) %>
+            <% if current_user.followed_users?(@user.id) %>
+              <%= button_to "Unfollow", follow_relationship_path(:id => book_card.user_id), :method => :delete, :class => "btn btn-info align-self-center mx-auto"%>
+            <% else %>
+            <%= button_to "Follow", follow_relationships_path(:id => book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
+              <% end %>
                 <% if book_card.user_id == current_user.id %>
                 <div class="col">
                 <%= button_to "remove", book_card_path(id: book_card.id), method: :delete , class: "btn btn-danger align-self-center mx-auto"%>

@@ -71,7 +71,7 @@ end
 #   time = Benchmark.measure {
 #     puts titles[o]
 #     title = titles[o]
-#     books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 2, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
+#     books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 1, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
 #     books.each_with_index do |book, index|
 #       nb_total += 1
 #       puts "#{index + 1} times searched book #{o + 1} with #{nb_total} search requests on #{nb} created books"
@@ -130,8 +130,8 @@ end
 #   puts time
 # end
 
-# p out
-# puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
+p out
+puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
 
 
 Book.all.count.times do |o|
@@ -139,8 +139,9 @@ Book.all.count.times do |o|
   bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
   p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
 end
+# tab=User.all
+# 5.times do |i|
+#   fl = Follow.create(follower_id: tab[i].id, followee_id: tab[i+1].id)
+#   puts "#{i + 1} follow created"
+# end
 
-10.times do |i|
-  fl = Follow.create(follower_id: User.all.sample.id, followee_id: User.all.sample.id)
-  puts "#{i + 1} follow created"
-end

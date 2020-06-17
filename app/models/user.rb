@@ -34,4 +34,20 @@ class User < ApplicationRecord
   def create_money_pot
     MoneyPot.create(user_id: self.id, money: 0)
   end
+
+  def follow(user_id)
+    followed_users.create(followee_id: user_id)
+  end
+
+  def unfollow(user_id)
+    Follow.find_by(followee_id: user_id).destroy
+  end
+
+  def followed_users?(user_id)
+    followed_users.find_by(followee_id: user_id)
+  end
+
+
+
 end
+
