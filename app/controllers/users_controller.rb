@@ -11,5 +11,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow(user_id)
+    followed_users.create(followee_id: user_id)
+  end
+
+  def unfollow(user_id)
+    followed_users.find_by(followee_id: user_id).destroy
+  end
   
 end

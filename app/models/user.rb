@@ -19,12 +19,13 @@ class User < ApplicationRecord
   has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
 
   #follow
+  #users that you are following followed_users followees, returns instance of users we are following
   has_many :followed_users, foreign_key: :follower_id, class_name: "Follow"
-  has_many :followees, through: :followed_users
+  has_many :followees, through: :followed_users, source: :followee
 
-
+  #users that follow you following_users followers, returns instance of users following us
   has_many :following_users, foreign_key: :followee_id, class_name: "Follow"
-  has_many :followers, through: :following_users
+  has_many :followers, through: :following_users, source: :follower
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
