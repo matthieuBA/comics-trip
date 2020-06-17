@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
-  before_action :authenticate_user!
+  def index
+    @books = Book.page(params[:page]).per(12)
+  end
 
   def new
     @book = Book.new
@@ -17,12 +20,13 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       flash[:error] = "La création de livre a échoué"
-      render 'new'
+      render "new"
     end
   end
 
   private
-    def book_params
-      params.require(:book).permit(:title, :author, :genre, :isbn, :picture, :abstract, :extract)
-    end
+
+  def book_params
+    params.require(:book).permit(:title, :author, :genre, :isbn, :picture, :abstract, :extract)
+  end
 end

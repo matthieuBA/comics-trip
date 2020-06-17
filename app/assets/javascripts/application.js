@@ -24,5 +24,6 @@ $(document).ready(function(){
           setTimeout(function(){location.reload();}, 300);            
       });
 });
-
-  window.setTimeout("document.getElementById('alert_message').style.display='none';", 6000);
+$(document).ready(function(){
+window.setTimeout("document.getElementById('alert_message').style.display='none';", 6000);
+});
