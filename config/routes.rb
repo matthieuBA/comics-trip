@@ -10,11 +10,11 @@ end
 
   resources :index
 
+resources :book_cards do
+  resources :book_pictures, only: [:create]
+  resources :tags, only: [:create]
+end
   resources :books
-
-  resources :book_cards do
-    resources :book_pictures, only: [:create]
-  end
 
   resources :landing_pages, only: [:index]
 
@@ -22,4 +22,3 @@ end
 
   resources :private_messages
 end
-

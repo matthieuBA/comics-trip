@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.datetime "updated_at", null: false
   end
 
+
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followee_id"
@@ -69,6 +70,16 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.index ["followee_id"], name: "index_follows_on_followee_id"
     t.index ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+  
+  create_table "joins", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "book_card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_card_id"], name: "index_joins_on_book_card_id"
+    t.index ["tag_id"], name: "index_joins_on_tag_id"
+
   end
 
   create_table "money_pots", force: :cascade do |t|
@@ -98,6 +109,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.integer "hits", default: 1, null: false
     t.index ["average_time"], name: "index_punches_on_average_time"
     t.index ["punchable_type", "punchable_id"], name: "punchable_index"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

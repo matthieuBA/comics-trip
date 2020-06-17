@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def create_money_pot
-    MoneyPot.create(user_id: self.id, money: 0)
+    MoneyPot.create(user_id: self.id, money: 50)
   end
 
   def follow(user_id)
