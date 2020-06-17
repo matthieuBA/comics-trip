@@ -84,3 +84,4 @@ gem 'image_processing'
 gem 'googlebooks'
 
 gem 'kaminari'
+
