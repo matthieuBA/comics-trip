@@ -23,7 +23,7 @@
         </div>
       <div class="d-flex justify-content-sm-center">
         <div class="row"  style="position: absolute;bottom: 0;">
-          <div class="col"><%= button_to "product", book_card_path(book_card.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
+          <div class="col"><%= button_to "Consulter", book_card_path(book_card.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
           <% if !current_user.nil? %>
             <% @user=User.find_by_id(book_card.user_id) %>
             <% if current_user.followed_users?(@user.id) %>
