@@ -3,7 +3,7 @@ class MoneyPotsController < ApplicationController
   def edit
     @book_card = BookCard.find(params[:id])
 
-    if @book_card.to_sell == "vendable"
+    if @book_card.to_sell == "vente"
       buy
     end
   end
