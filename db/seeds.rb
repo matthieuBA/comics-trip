@@ -15,6 +15,10 @@ Book.destroy_all
 BookCard.destroy_all
 Punch.destroy_all
 PrivateMessage.destroy_all
+Follow.destroy_all
+Tag.destroy_all
+Join.destroy_all
+
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vente", "achat", "critique"]
@@ -30,6 +34,13 @@ img = ["#{Rails.root}/vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
        "#{Rails.root}/vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"]
 
 books = []
+title_tags = ["BD d'exception", "BD dédicacée", "Tirage original"]
+img = [ "vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
+"vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
+"vendor/img/miika-laaksonen-nUL9aPgGvgM-unsplash.jpg",
+"vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"
+]
+
 nb = 0
 nb_total = 0
 nb_i = -1
@@ -55,6 +66,7 @@ def colorb(color = 34)
   yield
   printf "\033[0m"
 end
+
 
 10.times do |i|
   u_last = User.last
@@ -96,7 +108,6 @@ titles.count.times do |o|
                 colorg { p @size }
                 colorg { p @image.type }
                 colorg { p picture }
-
                 b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
                 bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
                 bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
@@ -107,10 +118,12 @@ titles.count.times do |o|
                 puts "added #{book.title} from index #{o}"
                 CSV.open(file_out, "ab") do |csv|
                   csv << [book.title]
+
                 end
                 CSV.open(file_out_id, "ab") do |csv|
                   csv << [book.id]
                 end
+
                 CSV.open(file_out_name, "ab") do |csv|
                   csv << [title]
                 end
@@ -134,5 +147,27 @@ titles.count.times do |o|
   puts "MOY = #{bmm}"
   puts time
 end
+
 p out
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
+
+
+Book.all.count.times do |o|
+  bc = BookCard.create(user_id: User.all.sample.id, book_id: Book.all.sample.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
+  bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
+  p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
+end
+
+tab=User.all
+5.times do |i|
+  fl = Follow.create(follower_id: tab[i].id, followee_id: tab[i+1].id)
+  puts "#{i + 1} follow created"
+end
+
+  
+title_tags.count.times do |i|
+  tag = Tag.create(title:title_tags[i])
+  puts "Tag n°#{i+1} created"
+  join = Join.create(book_card_id:BookCard.all.sample.id, tag_id:Tag.last.id)
+end
+

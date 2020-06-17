@@ -9,6 +9,17 @@
             <% else %>
               <p>Il n'y a pas d'image pour ce livre</p>
             <% end %>
+
+            <% if !current_user.nil? %>
+              <% user=User.find_by_id(@book_card.user_id) %>
+              <% if current_user.followed_users?(user.id) %>
+                <%= button_to "Unfollow", follow_relationship_path(:id => @book_card.user_id), :method => :delete, :class => "btn btn-info align-self-center mx-auto"%>
+              <% else %>
+                <%= button_to "Follow", follow_relationships_path(:id => @book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
+              <% end %>
+            <% end %>
+
+            
             <% if !current_user.nil? && @book_card.user_id == current_user.id %>
               <%= form_tag book_card_book_pictures_path(@book_card), multipart: true do %>
                 <%= file_field_tag :book_picture %>
@@ -59,7 +70,21 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active" id="service-one">
-                            <section class="container">
+                        # <% if !current_user.nil? && @book_card.user_id == current_user.id %>
+                        # <div class="container">
+                        # <%= form_with(model: @tag, local: true) do |form| %>
+                        # <%= form.select :title, ["BD d'exception", "BD dédicacée", "Tirage original"]%>
+                        # <%= form.submit 'Ajouter le tag', class:"btn-sm btn-info" %>
+                        # <% end %>
+                        # </div>
+                        # <%end%>    
+                        <section class="container">
+                                <% BookCard.find(@book_card.id).tags.each do |tag| %>
+                                <p>
+                                <%= tag.title %>
+                                </p>
+                                <%end%>
+                                  
                                 <p><%= @book_card.review %></p>
                                 <p><%= @user.email %></p>
                                 NOMBRE DE VUES:
