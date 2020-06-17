@@ -15,6 +15,7 @@ Book.destroy_all
 BookCard.destroy_all
 Punch.destroy_all
 PrivateMessage.destroy_all
+Follow.destroy_all
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vendable", "commenté", "recherché"]
@@ -57,6 +58,18 @@ end
   pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::Internet.email)
   puts "#{i + 1} users created"
 end
+
+#10.times do |i|
+  #fl = Follow.create(follower_id: User.all.sample.id, followee_id: User.all.sample.id)
+  #puts "#{i + 1} follow created"
+#end
+10.times do |i|
+  fl = Follow.create(follower_id: u, followee_id: u_last)
+  fl = Follow.create(follower_id: u_last, followee_id: u)
+  puts "#{i + 1} follow created"
+end
+
+
 
 titles.count.times do |o|
   time = Benchmark.measure {
@@ -122,3 +135,4 @@ titles.count.times do |o|
 end
 p out
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
+

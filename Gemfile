@@ -82,5 +82,3 @@ gem 'image_processing'
 
 # API Google books
 gem 'googlebooks'
-
-gem 'fastimage'

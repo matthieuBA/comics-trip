@@ -79,7 +79,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
-    devise (4.7.1)
+    devise (4.7.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -93,7 +93,6 @@ GEM
     execjs (2.7.0)
     faker (2.12.0)
       i18n (>= 1.6, < 2)
-    fastimage (2.1.7)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -146,7 +145,7 @@ GEM
     punching_bag (0.7.0)
       railties (>= 3.2)
       voight_kampff (>= 1.0)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.3)
@@ -251,7 +250,6 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker (~> 2.12)
-  fastimage
   googlebooks
   image_processing
   jbuilder (~> 2.5)
