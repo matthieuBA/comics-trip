@@ -2,5 +2,10 @@
   <h1> Bienvenue sur Comics trip</h1>
 </div>
 
+<div class="mx-auto" style="margin-top: 5rem; width: 500px;">
+  <% if @recipes.blank? %>
+    <h4>Il n'y a pas de recherche correspondant à vos critères <%= params[:search] %>.</h4>
+  <% end %>
+</div>
 <% @book_cards=BookCard.all %>
 <%= render 'book_cards_view' %>

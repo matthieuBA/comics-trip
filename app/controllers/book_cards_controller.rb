@@ -56,6 +56,15 @@ class BookCardsController < ApplicationController
     @book_card.destroy
     redirect_to book_cards_path
   end
+
+  def index
+    @book_cards = BookCard.all
+    if params[:search]
+      @book_cards = BookCard.search(params[:search]).order("created_at DESC")
+    else
+      @book_cards = BookCard.all.order("created_at DESC")
+    end
+  end
   
   private
 
