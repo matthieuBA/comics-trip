@@ -13,10 +13,10 @@
                     </div>
                     <div class="d-flex justify-content-sm-center">
                         <div class="row" style="position: absolute;bottom: 0;">
-                            <div class="col"><%= button_to "product", book_path(book.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
+                            <div class="col"><%= button_to "Consulter", book_path(book.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
                             <% if !current_user.nil? %>
                                 <div class="col">
-                                    <%= button_to "remove", book_path(id: book.id), method: :delete , class: "btn btn-danger align-self-center mx-auto"%>
+                                    <%= button_to "Effacer", book_path(id: book.id), method: :delete , class: "btn btn-danger align-self-center mx-auto"%>
                                 </div>
                             <% end %>
                         </div>

@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
 
     @url = 'https://comics-trip.herokuapp.com/'
 
-    mail(to: @user.email, subject: 'Bienvenue chez Comics trip !')
+    mail(to: @user.email, subject: 'Bienvenue chez COMICS TRIP !')
   end
 end

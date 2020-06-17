@@ -20,7 +20,7 @@
         </div>
       <div class="d-flex justify-content-sm-center">
         <div class="row"  style="position: absolute;bottom: 0;">
-          <div class="col"><%= button_to "product", book_card_path(book_card.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
+          <div class="col"><%= button_to "Consulter", book_card_path(book_card.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
           <% if !current_user.nil? %>
                 <% if book_card.user_id == current_user.id %>
                 <div class="col">
