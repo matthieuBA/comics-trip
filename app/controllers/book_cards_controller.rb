@@ -21,6 +21,7 @@ class BookCardsController < ApplicationController
       params[:book_card][:book_id] = @book.id
       @book_card = BookCard.new(book_card_params)
       if @book_card.save
+        add_tag
         flash[:success] = "Le livre a été créé avec succès."
         redirect_to book_card_path(@book_card.id)
       else
@@ -62,5 +63,10 @@ class BookCardsController < ApplicationController
   def book_card_params
     params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
   end
-end
 
+  def add_tag
+    tag = Tag.find_by(title:params[:book_card][:tag])
+    Join.create(book_card_id:BookCard.last.id, tag_id:tag.id)
+  end
+
+end

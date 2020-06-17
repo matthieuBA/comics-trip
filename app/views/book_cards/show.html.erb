@@ -55,7 +55,21 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane active" id="service-one">
-                            <section class="container">
+                        # <% if !current_user.nil? && @book_card.user_id == current_user.id %>
+                        # <div class="container">
+                        # <%= form_with(model: @tag, local: true) do |form| %>
+                        # <%= form.select :title, ["BD d'exception", "BD dédicacée", "Tirage original"]%>
+                        # <%= form.submit 'Ajouter le tag', class:"btn-sm btn-info" %>
+                        # <% end %>
+                        # </div>
+                        # <%end%>    
+                        <section class="container">
+                                <% BookCard.find(@book_card.id).tags.each do |tag| %>
+                                <p>
+                                <%= tag.title %>
+                                </p>
+                                <%end%>
+                                  
                                 <p><%= @book_card.review %></p>
                                 <p><%= @user.email %></p>
                                 NOMBRE DE VUES:

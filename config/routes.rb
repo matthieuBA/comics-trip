@@ -11,6 +11,7 @@ resources :books
 
 resources :book_cards do
   resources :book_pictures, only: [:create]
+  resources :tags, only: [:create]
 end
 
 resources :landing_pages, only: [:index]
@@ -18,5 +19,6 @@ resources :landing_pages, only: [:index]
 resources :google_books, only: [:index]
 
 resources :private_messages
+
 
 end
