@@ -47,7 +47,6 @@ class BookCardsController < ApplicationController
     else
       flash.alert = "Impossible d'éditer la fiche"
       render :edit
-      flash.alert = nil
     end
   end
 
@@ -57,12 +56,18 @@ class BookCardsController < ApplicationController
     redirect_to book_cards_path
   end
 
-  def index
-    @book_cards = BookCard.all
+  def index    
     if params[:search]
-      @book_cards = BookCard.search(params[:search]).order("created_at DESC")
+      @book_cards = BookCard.search(params[:search])
+      if @book_cards.empty?
+        @book_cards = BookCard.all
+        flash.notice = "Aucune recherche ne correspond à vos critères"
+        render :index
+      else
+        @book_cards
+      end
     else
-      @book_cards = BookCard.all.order("created_at DESC")
+      @book_cards = BookCard.all
     end
   end
   
@@ -72,4 +77,3 @@ class BookCardsController < ApplicationController
     params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
   end
 end
-

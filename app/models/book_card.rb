@@ -11,11 +11,16 @@ class BookCard < ApplicationRecord
   has_one_attached :book_picture
 
   def self.search(search)
-    book_id = []
-    book_id = Book.where("title ILIKE ? OR author ILIKE ? OR genre ILIKE ? or isbn ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
-    puts "#"*50
-    puts book_id
-    puts "#"*50
+    books = Book.where("title ILIKE ? OR author ILIKE ? OR genre ILIKE ? or isbn ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  
+    book_cards = []
 
+    books.each do |book|
+      BookCard.where(book_id: book.id).each do |book_card|
+        book_cards << book_card
+      end
+    end
+
+    book_cards
   end
 end
