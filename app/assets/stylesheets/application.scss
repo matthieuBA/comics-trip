@@ -11110,7 +11110,12 @@
  
  .pagination .page-link {
    border-radius: 425px 255px 25px 25px/25px 25px 5px 25px;
+   color: #333;
+   
  }
+ .pagination a:hover, .pagination a:active, .pagination a:focus {
+    color: gray;
+  }
  
  .progress {
    border: 2px solid #333;
