@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "follows", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followee_id"
@@ -71,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.index ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
-  
+
   create_table "joins", force: :cascade do |t|
     t.bigint "tag_id"
     t.bigint "book_card_id"
@@ -79,7 +78,6 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.datetime "updated_at", null: false
     t.index ["book_card_id"], name: "index_joins_on_book_card_id"
     t.index ["tag_id"], name: "index_joins_on_tag_id"
-
   end
 
   create_table "money_pots", force: :cascade do |t|
@@ -125,8 +123,11 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
