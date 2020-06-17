@@ -1,17 +1,35 @@
 <div style="margin-top: 5rem; text-align: center">
-  <h1> Bienvenue sur la page profil !</h1>
+    <h1>
+        Bienvenue sur la page profil !</h1>
 
     <div class="card mx-auto" style="width: 18rem; margin-top: 5rem;">
-    <div class="card-body">
+        <div class="card-body">
 
-      
-      
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= @user.email %></li>
-        <li class="list-group-item">
-          <a class="btn btn-primary" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a> </br>
-        </li>
-      </ul>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= @user.email %></li>
+                <li class="list-group-item">
+                    <a class="btn btn-primary" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a>
+                    <br/>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
+<div style="margin-top: 5rem; text-align: center">
+    <div class="card mx-auto" style="width: 18rem; margin-top: 5rem;">
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <% current_user.followed_users_list(current_user.id).each do |followee| %>
+                    <p>
+                        <%= user=User.find_by(id:followee.followee_id)%>
+                        <%= user.email %>
+                    </p>
+                    <li class="list-group-item"><%=followee.id %></li>
+                    <%end%>
+
+                    <li class="list-group-item"></li>
+                </ul>
+            </div>
+        </div>
+    </div>

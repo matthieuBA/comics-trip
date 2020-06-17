@@ -15,8 +15,8 @@ class User < ApplicationRecord
   after_create :welcome_send
 
   #private message
-  has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
-  has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
+  has_many :sent_messages, foreign_key: "sender_id", class_name: "PrivateMessage"
+  has_many :received_messages, foreign_key: "recipient_id", class_name: "PrivateMessage"
 
   #follow
   #users that you are following followed_users followees, returns instance of users we are following
@@ -47,7 +47,7 @@ class User < ApplicationRecord
     followed_users.find_by(followee_id: user_id)
   end
 
-
-
+  def followed_users_list(user_id)
+     Follow.where(follower_id: user_id)
+  end
 end
-
