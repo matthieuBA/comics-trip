@@ -7,7 +7,6 @@ Follow.destroy_all
 Tag.destroy_all
 Join.destroy_all
 
-
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vente", "achat", "critique"]
 
@@ -23,12 +22,14 @@ img = ["#{Rails.root}/vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
 
 books = []
 title_tags = ["BD d'exception", "BD dédicacée", "Tirage original"]
-img = [ "vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
-"vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
-"vendor/img/miika-laaksonen-nUL9aPgGvgM-unsplash.jpg",
-"vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"
-]
-
+img = ["vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
+       "vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
+       "vendor/img/miika-laaksonen-nUL9aPgGvgM-unsplash.jpg",
+       "vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"]
+picture = MiniMagick::Image.open("https://static.actu.fr/uploads/2019/08/les-profs-22-854x1161.jpg")
+picture.write("from_internets.jpg")
+path = MiniMagick::Image.open("from_internets.jpg").path
+img = ["from_internets.jpg"]
 nb = 0
 nb_total = 0
 nb_i = -1
@@ -55,7 +56,6 @@ def colorb(color = 34)
   printf "\033[0m"
 end
 
-
 10.times do |i|
   u_last = User.last
   u = User.create(password: "not_blank", email: Faker::Internet.email)
@@ -79,25 +79,25 @@ titles.count.times do |o|
           if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
             colorg { p book.categories }
             picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
-                colorg { p picture }
-                b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
-                to_sell=sell[rand(3)]
-                colorg { p to_sell }
-                colorr { p rand(3) }
-                case to_sell
-                when "vente"
-                  bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, book_condition: conditions[rand(3)])
-                when "achat"
-                  bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell)
-                when "critique"
-                  bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: Faker::Quote.famous_last_words)
-                end
-                BookCard.last.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
-                p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
-                nb += 1
-                puts "#{nb} books created"
-                out << titles[o]
-                puts "added #{book.title} from index #{o}"
+            colorg { p picture }
+            b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
+            to_sell = sell[rand(3)]
+            colorg { p to_sell }
+            colorr { p rand(3) }
+            case to_sell
+            when "vente"
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, book_condition: conditions[rand(3)])
+            when "achat"
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell)
+            when "critique"
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: Faker::Quote.famous_last_words)
+            end
+            BookCard.last.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
+            p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
+            nb += 1
+            puts "#{nb} books created"
+            out << titles[o]
+            puts "added #{book.title} from index #{o}"
           end
         end
       end
@@ -114,23 +114,20 @@ end
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
 p out
 
-
-
 # Book.all.count.times do |o|
 #   # bc = BookCard.create(user_id: User.all.sample.id, book_id: Book.all.sample.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
 #   # bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
 #   p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
 # end
 
-tab=User.all
+tab = User.all
 5.times do |i|
-  fl = Follow.create(follower_id: tab[i].id, followee_id: tab[i+1].id)
+  fl = Follow.create(follower_id: tab[i].id, followee_id: tab[i + 1].id)
   puts "#{i + 1} follow created"
 end
 
 title_tags.count.times do |i|
-  tag = Tag.create(title:title_tags[i])
-  puts "Tag n°#{i+1} created"
-  join = Join.create(book_card_id:BookCard.all.sample.id, tag_id:Tag.last.id)
+  tag = Tag.create(title: title_tags[i])
+  puts "Tag n°#{i + 1} created"
+  join = Join.create(book_card_id: BookCard.all.sample.id, tag_id: Tag.last.id)
 end
-

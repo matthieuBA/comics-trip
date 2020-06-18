@@ -85,3 +85,5 @@ gem 'googlebooks'
 
 gem 'kaminari'
 
+gem "mini_magick"
+
