@@ -9,15 +9,15 @@
         <%= f.hidden_field :reset_password_token %>
 
         <div class="form-group">
-          <%= f.label :password, "New password" %><br />
+          <%= f.label :mot_de_passe %><br />
           <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <em>(<%= @minimum_password_length %> caractères minimum)</em><br />
           <% end %>
           <%= f.password_field :password, autofocus: true, autocomplete: "Nouveau mot de passe", class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, "Confirmer mon nouveau mot de passe" %><br />
+          <%= f.label :confirmation_du_mot_de_passe %><br />
           <%= f.password_field :password_confirmation, autocomplete: "Nouveau mot de passe", class: "form-control" %>
         </div>
 

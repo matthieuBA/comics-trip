@@ -22,7 +22,7 @@ class BookCardsController < ApplicationController
       @book_card = BookCard.new(book_card_params)
       if @book_card.save
         add_tag
-        flash[:success] = "Le livre a été créé avec succès."
+        flash[:success] = "Merci pour l'ajout! Le livre a été créé avec succès."
         redirect_to book_card_path(@book_card.id)
       else
         flash[:error] = @book_card.errors.messages
@@ -43,7 +43,7 @@ class BookCardsController < ApplicationController
     @book_card = BookCard.find(params[:id])
 
     if @book_card.update(book_card_params)
-      flash.notice = "Fiche édité avec succés"
+      flash.notice = "Fiche éditée avec succés"
       redirect_to book_card_path(params[:id])
     else
       flash.alert = "Impossible d'éditer la fiche"

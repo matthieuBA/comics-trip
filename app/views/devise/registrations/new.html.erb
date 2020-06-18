@@ -6,18 +6,18 @@
         <h1 class="h3 mb-3 font-weight-normal text-center">Inscription</h1>
         <%= devise_error_messages! %>
         <div class="form-group">
-          <%= f.label :email, "Email" %><br />
+          <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "Email", class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :password %>
+          <%= f.label :mot_de_passe %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> caractères minimum)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "Nouveau mot de passe", class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :password_confirmation %><br />
+          <%= f.label :confirmation_du_mot_de_passe %><br />
           <%= f.password_field :password_confirmation, autocomplete: "Nouveau mot de passe", class: "form-control" %>
         </div>
         <div class="actions mt-5">
