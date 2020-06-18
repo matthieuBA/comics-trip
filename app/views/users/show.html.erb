@@ -15,3 +15,18 @@
     </div>
   </div>
 </div>
+<%=User.find(current_user.id).followees.count%> followees
+<br/>
+<% User.find(current_user.id).followees.each do |followee|%>
+    <%# <li class="list-group-item"><%=debug follow</li> %>
+    <%=followee.email%>
+    <%= button_to "Unfollow", follow_relationship_path(:id => followee.id), :method => :delete, :class => "btn btn-info align-self-center mx-auto"%>
+    <br/>
+    <%end%>
+<%=User.find(current_user.id).followers.count%> followers
+<br/>
+<% User.find(current_user.id).followers.each do |follower|%>
+    <%# <li class="list-group-item"><%=debug follow</li> %>
+    <%=follower.email%>
+    <br/>
+    <%end%> 
