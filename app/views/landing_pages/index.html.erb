@@ -2,17 +2,18 @@
     <div class="container text-center" >
         <%= image_tag("logos/logo.png", width: '250px')%>
             <h1 class="text-white">Vos BD ont plusieurs vies! </h1>
-    <p class="lead text-white">Partagez vos critiques de bandes dessinnées<br/>
-Vendez vos occasions</p>
+    <p class="lead text-white">Vendez vos occasions<br/>
+    &<br>
+    Partagez vos critiques de bandes dessinnées</p>
     
 
 <div class="flex-container" >
 <div class="row">
 <div class="col" >
-<td><%= button_to "Parcourir Nos Fiches De Livres »", book_cards_path, method: :get , class: "btn btn-info btn-lg"%></td>
+<td><%= button_to "Parcourez les Fiches »", book_cards_path, method: :get , class: "btn btn-info btn-lg"%></td>
 </div>
 <div class="col" >
-<td><%= button_to "Creer Une Nouvelle Fiches de livres »", new_book_card_path, method: :get , class: "btn btn-info btn-lg"%></td>
+<td><%= button_to "Vendez vos BD »", new_book_card_path, method: :get , class: "btn btn-info btn-lg"%></td>
 </div>
 </div>
 
