@@ -4,7 +4,7 @@
         <% @books.each do |book| %>
             <div class="card col col-auto justify-content-center align-items-center" style="width: 24rem; margin: 1rem auto">
                 <% unless book.picture.nil? %>
-                <img class="card-img-top justify-content-center align-items-center" style="height: 55%; width:auto%; max-width:95%; max-height:70%;margin-top:1rem; margin-bottom:18rem" src="<%=book.picture.chomp("0")+"2"%>" alt="Card image cap">
+                <img class="card-img-top justify-content-center align-items-center" style="height: 55%; width:auto%; max-width:95%; max-height:70%;margin-top:1rem; margin-bottom:18rem" src="<%=book.picture[0...-1]+"2"%>" alt="Card image cap">
                 <% else %>
                     <img class="card-img-top" style="margin-top:1rem; padding-bottom:33rem" src="" alt="Card image cap">
                     <% end %>
