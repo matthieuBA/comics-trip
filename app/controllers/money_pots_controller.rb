@@ -21,4 +21,8 @@ class MoneyPotsController < ApplicationController
       end
     end
   end
+
+  def show
+    @money_pot = MoneyPot.find(params[:id])
+  end
 end

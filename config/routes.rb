@@ -21,4 +21,6 @@ end
   resources :google_books, only: [:index]
 
   resources :private_messages
+
+  resources :charges
 end
