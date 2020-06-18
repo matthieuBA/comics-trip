@@ -46,8 +46,4 @@ class User < ApplicationRecord
   def followed_users?(user_id)
     followed_users.find_by(followee_id: user_id)
   end
-
-
-
 end
-

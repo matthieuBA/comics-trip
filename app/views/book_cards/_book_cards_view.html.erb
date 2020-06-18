@@ -4,7 +4,7 @@
     <% @book_cards.each do |book_card| %>
       <% user = User.find_by(id: book_card.user_id) %>
       <% book = Book.find_by(id: book_card.book_id) %>
-      <div class="card col col-auto" style="width: 35rem; margin: 1rem 1rem 1rem 1rem;">
+      <div class="card col col-auto" style="width: 20vw; margin: 1rem 1rem 1rem 1rem;">
         <% if !book_card.book_picture_seed.nil? %>
           <img class="card-img-top" style="height: auto; width:100;margin-top:1rem; padding-bottom:33rem" src=" <%= book_card.book_picture_seed %> " alt="Card image cap"/>
         <% end %>
