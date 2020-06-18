@@ -6,7 +6,7 @@ class CreateBookCards < ActiveRecord::Migration[5.2]
       t.decimal :price
       t.string :to_sell
       t.string :book_condition
-      t.string :book_picture
+      t.string :book_picture_seed
       t.text :review
       t.timestamps
     end
