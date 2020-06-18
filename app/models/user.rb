@@ -11,9 +11,6 @@ class User < ApplicationRecord
 
   has_one :money_pot
 
-  # mailer "welcome"
-  after_create :welcome_send
-
   #private message
   has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
   has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
