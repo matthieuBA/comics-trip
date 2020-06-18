@@ -8,10 +8,10 @@ local:
 
 amazon:
   service: S3
-    access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-    secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-    region: us-east-1
-    bucket: comics.trip
+	access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+	secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>
+  region: eu-west-3
+  bucket: comics.trip
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
