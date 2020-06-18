@@ -23,8 +23,8 @@
 </div>
 
 <div class="mx-auto text-center" style="margin-top: 5rem; width: 500px;">
-  <h2>Nos 9 BDs les plus vues :</h2>
+  <h2>Nos BDs du moment :</h2>
 </div>
 
-<% @book_cards=BookCard.most_hit(nil, 9) %>
+<% @book_cards = BookCard.most_hit(nil, 8) %>
 <%= render 'book_cards/book_cards_view' %>
