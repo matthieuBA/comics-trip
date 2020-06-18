@@ -4,16 +4,28 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="<%= root_path %>">Accueil</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%= book_cards_path %>">Fiches</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%= new_book_card_path %>">Nouvelle Fiche</a>
-            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Toutes nos BDs
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="<%=book_cards_path%>">Achats</a>
+                        <a class="dropdown-item" href="<%=book_cards_path%>">Ventes</a>
+                        <a class="dropdown-item" href="<%=book_cards_path%>">Critiques</a>
+                    </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Créer une fiche
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="<%=new_book_card_path%>">Achats</a>
+                    <a class="dropdown-item" href="<%=new_book_card_path%>">Ventes</a>
+                    <a class="dropdown-item" href="<%=new_book_card_path%>">Critiques</a>
+                </div>
+              </li>
             <% if user_signed_in? %><% end %>
             <li class="nav-item dropdown">
                 <% if user_signed_in? %>
