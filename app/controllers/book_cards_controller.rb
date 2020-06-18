@@ -10,7 +10,7 @@ class BookCardsController < ApplicationController
 
   def new
     @book_card = BookCard.new
-    @type = params[:type] 
+    @type = params[:type]
     puts @type
   end
 
@@ -59,6 +59,7 @@ class BookCardsController < ApplicationController
 
   def index
     if params[:search]
+      @title = "Résultat de votre recherche"
       @book_cards = BookCard.search(params[:search])
       if @book_cards.empty?
         @book_cards = BookCard.all
@@ -67,7 +68,8 @@ class BookCardsController < ApplicationController
       else
         @book_cards
       end
-    elsif params[:type]
+    elsif params[:type] && params[:user].nil?
+      @title = "Liste #{params[:type]} filtrée"
       @book_cards = BookCard.where(to_sell: params[:type]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
@@ -76,7 +78,28 @@ class BookCardsController < ApplicationController
       else
         @book_cards
       end
+    elsif params[:type] && params[:user]
+      @title = "Liste #{params[:type]} de l' utilisateur #{User.find_by(id: params[:user]).email}"
+      @book_cards = BookCard.where(to_sell: params[:type], user_id: params[:user]).page(params[:page]).per(20)
+      if @book_cards.empty?
+        @book_cards = BookCard.page(params[:page]).per(20)
+        flash.notice = "Aucune annonce ne correspond à vos critères"
+        render :index
+      else
+        @book_cards
+      end
+    elsif params[:type].nil? && params[:user]
+      @title = "Liste de l' utilisateur #{User.find_by(id: params[:user]).email}"
+      @book_cards = BookCard.where(user_id: params[:user]).page(params[:page]).per(20)
+      if @book_cards.empty?
+        @book_cards = BookCard.page(params[:page]).per(20)
+        flash.notice = "Aucune annonce ne correspond à vos critères"
+        render :index
+      else
+        @book_cards
+      end
     else
+      @title = "Liste complète"
       @book_cards = BookCard.page(params[:page]).per(20)
     end
   end

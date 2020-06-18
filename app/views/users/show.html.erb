@@ -1,32 +1,46 @@
-<div style="margin-top: 5rem; text-align: center">
-  <h1> Bienvenue sur la page profil !</h1>
+<div class="container">
+    <div style="margin-top: 5rem; text-align: center">
+        <h1>Bienvenue sur votre  profil :</h1>
+        <div class="card mx-auto" style="margin-top: 5rem;">
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><%= @user.email %></li>
+                    <li class="list-group-item">
+                        <a class="btn btn-sm btn-info" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a>
+                    </li>
+                </ul>
 
-    <div class="card mx-auto" style="width: 18rem; margin-top: 5rem;">
-    <div class="card-body">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <button type="button" class="btn btn-sm btn-info">Mes annonces</button>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="<%=book_cards_path+"?&user=#{current_user.id}"%>">Toutes mes annonces</a>
+                            <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente&user=#{current_user.id}"%>">Mes annonces de ventes</a>
+                            <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique&user=#{current_user.id}"%>">Mes critiques de BD</a>
+                            <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat&user=#{current_user.id}"%>">Mes annonces de recherches</a>
+                        </div>
+                    </div>
+                </div>
 
-      
-      
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><%= @user.email %></li>
-        <li class="list-group-item">
-          <a class="btn btn-primary" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a> </br>
-        </li>
-      </ul>
+            </div>
+        </div>
+        Vous suivez
+        <%=User.find(current_user.id).followees.count%>
+        utilisateurs :
+        <br/>
+        <% User.find(current_user.id).followees.each do |followee|%>
+        <%=followee.email%>
+        <%= button_to "Ne plus suivre", follow_relationship_path(:id => followee.id), :method => :delete, :class => "btn btn-sm btn-info align-self-center mx-auto"%>
+        <br/>
+        <%end%>
+        Vous êtes suivi par
+        <%=User.find(current_user.id).followers.count%>
+        utilisateurs:
+        <br/>
+        <% User.find(current_user.id).followers.each do |follower|%>
+        <%=follower.email%>
+        <br/>
+        <%end%>
     </div>
-  </div>
 </div>
-Vous suivez <%=User.find(current_user.id).followees.count%> utilisateurs:
-<br/>
-<% User.find(current_user.id).followees.each do |followee|%>
-    <%# <li class="list-group-item"><%=debug follow</li> %>
-    <%=followee.email%>
-    <%= button_to "Ne plus suivre", follow_relationship_path(:id => followee.id), :method => :delete, :class => "btn btn-info align-self-center mx-auto"%>
-    <br/>
-    <%end%>
-Vous êtes suivi par <%=User.find(current_user.id).followers.count%> utilisateurs:
-<br/>
-<% User.find(current_user.id).followers.each do |follower|%>
-    <%# <li class="list-group-item"><%=debug follow</li> %>
-    <%=follower.email%>
-    <br/>
-    <%end%> 
