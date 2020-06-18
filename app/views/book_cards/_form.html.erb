@@ -20,34 +20,41 @@
     </div>
 
 
+    <% if @type=="vente" %>
     <div class="field form-group-sm col-4">
       <%= form.label :Prix %>
       <%= form.text_field :price, class: 'form-control' %>
     </div>
-  <p> Vente , Achat, Critique, </p>
-  <div class="field form-group-sm col-4">
-  <%= form.select :to_sell, ['Vente', 'Achat', 'Critique']%>
-  </div>
+    
+
     <div class="field form-group-sm col-4">
       <%= form.label :Etat %>
       <%= form.text_field :book_condition, class: 'form-control' %>
     </div>
-
+    <% end %>
 
     <div class="field form-group-sm col-4">
       <%= form.label :Image %>
       <%= form.file_field :book_picture %>
     </div>
 
-
+    <% if @type=="critique" %>
     <div class="field form-group-sm col-4">
       <%= form.label :Critique %>
       <%= form.text_field :review, class: 'form-control' %>
     </div>
+    <% end %>
+
+    <% if @type=="vente" %>
+    <div class="field form-group-sm col-4">
+      <%= form.label :Résumé %>
+      <%= form.text_field :review, class: 'form-control' %>
+    </div>
+    <% end %>
 
     <div class="field form-group-sm col-4">
       <%= form.label :Tag %>
-      <%= form.select :tag, ["BD d'exception", "BD dédicacée", "Tirage original"]%>  
+      <%= form.select :tag, ["", "BD d'exception", "BD dédicacée", "Tirage original"]%>  
     </div>
     
   <div class="field form-group-sm col-4">
