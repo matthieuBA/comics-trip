@@ -65,7 +65,7 @@ titles.count.times do |o|
   time = Benchmark.measure {
     puts titles[o]
     title = titles[o]
-    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 1, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
+    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 4, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
     books.each_with_index do |book, index|
       nb_total += 1
       puts "#{index + 1} times searched book #{o + 1} with #{nb_total} search requests on #{nb} created books"
@@ -76,18 +76,18 @@ titles.count.times do |o|
           if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
             colorg { p book.categories }
             picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
+            thumbnail = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=2"
             colorg { p picture }
             b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
             to_sell = sell[rand(3)]
             colorg { p to_sell }
-            colorr { p rand(3) }
             case to_sell
             when "vente"
-              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, book_condition: conditions[rand(3)], book_picture_seed: "https://static.actu.fr/uploads/2019/08/les-profs-22-854x1161.jpg")
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, book_condition: conditions[rand(3)], book_picture_seed: thumbnail)
             when "achat"
-              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, book_picture_seed: "https://static.actu.fr/uploads/2019/08/les-profs-22-854x1161.jpg")
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, book_picture_seed: thumbnail)
             when "critique"
-              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: Faker::Quote.famous_last_words, book_picture_seed: "https://static.actu.fr/uploads/2019/08/les-profs-22-854x1161.jpg")
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: Faker::Quote.famous_last_words, book_picture_seed: thumbnail)
             end
             BookCard.last.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
             p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
@@ -110,12 +110,6 @@ titles.count.times do |o|
 end
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
 p out
-
-# Book.all.count.times do |o|
-#   # bc = BookCard.create(user_id: User.all.sample.id, book_id: Book.all.sample.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
-#   # bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
-#   p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
-# end
 
 tab = User.all
 5.times do |i|
