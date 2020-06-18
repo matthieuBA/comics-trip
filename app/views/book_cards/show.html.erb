@@ -13,9 +13,9 @@
             <% if !current_user.nil? %>
               <% user=User.find_by_id(@book_card.user_id) %>
               <% if current_user.followed_users?(user.id) %>
-                <%= button_to "Unfollow", follow_relationship_path(:id => @book_card.user_id), :method => :delete, :class => "btn btn-info align-self-center mx-auto"%>
+                <%= button_to "Ne plus suivre", follow_relationship_path(:id => @book_card.user_id), :method => :delete, :class => "btn btn-info align-self-center mx-auto"%>
               <% else %>
-                <%= button_to "Follow", follow_relationships_path(:id => @book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
+                <%= button_to "Suivre", follow_relationships_path(:id => @book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
               <% end %>
             <% end %>
 
@@ -48,8 +48,8 @@
                 <hr>
                   <% if !current_user.nil? && @book_card.user_id == current_user.id %>
                     <div class="container">
-                      <%= button_to "remove", book_card_path(id: @book_card.id), method: :delete, class: "btn btn-danger"%>
-                      <%= button_to "edit", edit_book_card_path(id: @book_card.id), method: :get, class: "btn btn-info"%>
+                      <%= button_to "Effacer", book_card_path(id: @book_card.id), method: :delete, class: "btn btn-danger"%>
+                      <%= button_to "Editer", edit_book_card_path(id: @book_card.id), method: :get, class: "btn btn-info"%>
                     </div>
                   <%end%>
                 </div>
