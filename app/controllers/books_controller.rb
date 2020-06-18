@@ -19,7 +19,7 @@ class BooksController < ApplicationController
       flash[:success] = "Le livre a été créé avec succès."
       redirect_to book_path(@book.id)
     else
-      flash[:error] = "La création de livre a échoué"
+      flash[:error] = "Essaye encore! La création de livre a échoué"
       render "new"
     end
   end

@@ -1,7 +1,7 @@
 <p>Bonjour <%= @resource.email %>!</p>
 
-<p>Vous avez dépassé le nombre de tentatives de connections. Votre compte a été verrouillé.</p>
+<p>Vous avez dépassé le nombre de tentatives de connexions. Votre compte a été verrouillé.</p>
 
-<p>Clickez sur le lien ci-dessous pour le dévérouiller:</p>
+<p>Clickez sur le lien ci-dessous pour le déverouiller:</p>
 
 <p><%= link_to 'Rétablir mon compte', unlock_url(@resource, unlock_token: @token) %></p>
