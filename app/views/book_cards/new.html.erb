@@ -9,7 +9,19 @@
   </div>
 <% end %>
 <div class="container">
-  <h1>Nouvelle Fiche</h1>
+<% if @type=="vente" %>  
+  <h1>Nouvelle annonce de vente</h1>
+  <% end %>
+
+  <% if @type=="critique" %>  
+  <h1>Nouvelle critique de lecteur</h1>
+  <% end %>
+
+  <% if @type=="achat" %>  
+  <h1>Nouvelle annonce de recherche</h1>
+  <% end %>
+
   <%= render 'form', book: @book_card %>
   <%= link_to 'Retour', book_cards_path %>
-</div>
+  </div>
+

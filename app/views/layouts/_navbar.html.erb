@@ -13,9 +13,9 @@
                     BDs
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="<%=book_cards_path+"?utf8=✓&type=vente"%>">Les BDs en vente</a>
-                    <a class="dropdown-item" href="<%=book_cards_path+"?utf8=✓&type=critique"%>">Les critiques des lecteurs</a>
-                    <a class="dropdown-item" href="<%=book_cards_path+"?utf8=✓&type=achat"%>">Les annonces de recherche</a>
+                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente"%>">Les BDs en vente</a>
+                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique"%>">Les critiques des lecteurs</a>
+                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat"%>">Les annonces de recherche</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -23,9 +23,9 @@
                     Créer une fiche
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="<%=new_book_card_path%>">Poster une annonce de vente</a>
-                    <a class="dropdown-item" href="<%=new_book_card_path%>">Poster une critique de BD</a>
-                    <a class="dropdown-item" href="<%=new_book_card_path%>">Poster une annonce de recherche</a>
+                    <a class="dropdown-item" href="<%=new_book_card_path+"?&type=vente"%>">Poster une annonce de vente</a>
+                    <a class="dropdown-item" href="<%=new_book_card_path+"?&type=critique"%>">Poster une critique de BD</a>
+                    <a class="dropdown-item" href="<%=new_book_card_path+"?&type=achat"%>">Poster une annonce de recherche</a>
                 </div>
             </li>
             <% if user_signed_in? %><% end %>
