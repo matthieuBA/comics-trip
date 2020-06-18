@@ -10,6 +10,8 @@ class BookCardsController < ApplicationController
 
   def new
     @book_card = BookCard.new
+    @type = params[:type] 
+    puts @type
   end
 
   def create
