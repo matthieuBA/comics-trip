@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_131824) do
     t.decimal "price"
     t.string "to_sell"
     t.string "book_condition"
+    t.string "book_picture_seed"
     t.text "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
