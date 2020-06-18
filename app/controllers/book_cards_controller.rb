@@ -68,16 +68,16 @@ class BookCardsController < ApplicationController
         @book_cards
       end
     elsif params[:type]
-      @book_cards = BookCard.where(to_sell: params[:type])
+      @book_cards = BookCard.where(to_sell: params[:type]).page(params[:page]).per(20)
       if @book_cards.empty?
-        @book_cards = BookCard.all
+        @book_cards = BookCard.page(params[:page]).per(20)
         flash.notice = "Aucune annonce ne correspond à vos critères"
         render :index
       else
         @book_cards
       end
     else
-      @book_cards = BookCard.all
+      @book_cards = BookCard.page(params[:page]).per(20)
     end
   end
 
