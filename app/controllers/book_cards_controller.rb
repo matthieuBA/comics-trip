@@ -1,7 +1,6 @@
 class BookCardsController < ApplicationController
-  
   before_action :authenticate_user!, except: [:index, :show]
-  
+
   def show
     @book_card = BookCard.find_by(id: params[:id])
     @book_card.punch(request)
@@ -26,17 +25,16 @@ class BookCardsController < ApplicationController
         redirect_to book_card_path(@book_card.id)
       else
         flash[:error] = @book_card.errors.messages
-        render 'new'
+        render "new"
       end
     else
-      flash[:error] = "Le livre portant l'isbn : "+book_card_params[:book_id]+" n'existe pas encore. Merci de créer la fiche du livre associé"
+      flash[:error] = "Le livre portant l'isbn : " + book_card_params[:book_id] + " n'existe pas encore. Merci de créer la fiche du livre associé"
       redirect_to new_book_path
     end
   end
-  
-  def edit
-    @book_card = BookCard.find(params[:id])      
 
+  def edit
+    @book_card = BookCard.find(params[:id])
   end
 
   def update
@@ -57,7 +55,7 @@ class BookCardsController < ApplicationController
     redirect_to book_cards_path
   end
 
-  def index    
+  def index
     if params[:search]
       @book_cards = BookCard.search(params[:search])
       if @book_cards.empty?
@@ -67,11 +65,20 @@ class BookCardsController < ApplicationController
       else
         @book_cards
       end
+    elsif params[:type]
+      @book_cards = BookCard.where(to_sell: params[:type])
+      if @book_cards.empty?
+        @book_cards = BookCard.all
+        flash.notice = "Aucune annonce ne correspond à vos critères"
+        render :index
+      else
+        @book_cards
+      end
     else
       @book_cards = BookCard.all
     end
   end
-  
+
   private
 
   def book_card_params
@@ -79,7 +86,7 @@ class BookCardsController < ApplicationController
   end
 
   def add_tag
-    tag = Tag.find_by(title:params[:book_card][:tag])
-    Join.create(book_card_id:BookCard.last.id, tag_id:tag.id)
+    tag = Tag.find_by(title: params[:book_card][:tag])
+    Join.create(book_card_id: BookCard.last.id, tag_id: tag.id)
   end
 end
