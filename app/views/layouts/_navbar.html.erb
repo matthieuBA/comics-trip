@@ -40,7 +40,7 @@
     </ul>
 
     <%= form_tag(book_cards_path, :method => "get", id: "search-form") do %>
-      <%= text_field_tag :rechercher, params[:search], placeholder: "Rechercher un livre" %>
+      <%= text_field_tag :search, params[:search], placeholder: "Rechercher un livre" %>
       <%= submit_tag "Rechercher", :name => nil %>
     <% end %>
 
