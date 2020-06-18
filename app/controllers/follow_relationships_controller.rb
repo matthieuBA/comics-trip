@@ -5,7 +5,7 @@ class FollowRelationshipsController < ApplicationController
     def create
       @user = User.find_by! id: params[:id]
       if current_user.follow @user.id
-        flash[:success] = "Vous suivez maintenant le user #{@user.email}"
+        flash[:success] = "Vous suivez maintenant le compte de  #{@user.email}"
         respond_to do |format|
           format.html { redirect_to request.referrer }
         end
@@ -15,7 +15,7 @@ class FollowRelationshipsController < ApplicationController
     def destroy
       @user = User.find_by! id: params[:id]
       if current_user.unfollow @user.id
-        flash[:error] = "Vous ne suivez plus le user #{@user.email}"
+        flash[:error] = "Vous ne suivez plus le compte de #{@user.email}"
         respond_to do |format|
           format.html { redirect_to request.referrer }
         end

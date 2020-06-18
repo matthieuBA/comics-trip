@@ -22,7 +22,7 @@ class BookCardsController < ApplicationController
       @book_card = BookCard.new(book_card_params)
       if @book_card.save
         add_tag
-        flash[:success] = "Le livre a été créé avec succès."
+        flash[:success] = "Merci pour l'ajout! Le livre a été créé avec succès."
         redirect_to book_card_path(@book_card.id)
       else
         flash[:error] = @book_card.errors.messages
