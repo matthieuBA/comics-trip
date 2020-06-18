@@ -1,15 +1,3 @@
-require "csv"
-require "mini_magick"
-
-file_cat = "#{Rails.root}/db/data_cat.csv"
-file_out = "#{Rails.root}/db/data_out.csv"
-file_out_id = "#{Rails.root}/db/data_out_id.csv"
-file_out_name = "#{Rails.root}/db/data_out_name.csv"
-CSV.open(file_cat, "w") do |csv| end
-CSV.open(file_out, "w") do |csv| end
-CSV.open(file_out_id, "w") do |csv| end
-CSV.open(file_out_name, "w") do |csv| end
-
 User.destroy_all
 Book.destroy_all
 BookCard.destroy_all
@@ -86,54 +74,30 @@ titles.count.times do |o|
       puts "#{index + 1} times searched book #{o + 1} with #{nb_total} search requests on #{nb} created books"
       unless book.nil?
         if book.language == "fr"
-          puts "ˇ." * 10
           p book.categories
-          CSV.open(file_cat, "ab") do |writer|
-            writer << [book.categories]
-          end
-          puts ".^" * 10
           colorr { p book.language }
-
           if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
             colorg { p book.categories }
-
             picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
-            # picture = book.image_link(:zoom => 0)
-
-            puts "ˇ" * 100
-            @image = MiniMagick::Image.open(picture)
-            @size = @image.dimensions
-            unless p @size.nil?
-              if @size[0] >= 600 && @size[1] >= 800 && @size != [575, 750] && @image.type == "JPEG"
-                colorg { p @size }
-                colorg { p @image.type }
                 colorg { p picture }
                 b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
-                bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
-                bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
+                to_sell=sell[rand(3)]
+                colorg { p to_sell }
+                colorr { p rand(3) }
+                case to_sell
+                when "vente"
+                  bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, book_condition: conditions[rand(3)])
+                when "achat"
+                  bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell)
+                when "critique"
+                  bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: Faker::Quote.famous_last_words)
+                end
+                BookCard.last.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
                 p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
                 nb += 1
                 puts "#{nb} books created"
                 out << titles[o]
                 puts "added #{book.title} from index #{o}"
-                CSV.open(file_out, "ab") do |csv|
-                  csv << [book.title]
-
-                end
-                CSV.open(file_out_id, "ab") do |csv|
-                  csv << [book.id]
-                end
-
-                CSV.open(file_out_name, "ab") do |csv|
-                  csv << [title]
-                end
-              else
-                colorb { puts "#" * 50 }
-                colorb { puts @size }
-                colorb { puts "#" * 50 }
-              end
-            end
-            puts "^" * 100
           end
         end
       end
@@ -147,16 +111,16 @@ titles.count.times do |o|
   puts "MOY = #{bmm}"
   puts time
 end
-
-p out
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
+p out
 
 
-Book.all.count.times do |o|
-  bc = BookCard.create(user_id: User.all.sample.id, book_id: Book.all.sample.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
-  bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
-  p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
-end
+
+# Book.all.count.times do |o|
+#   # bc = BookCard.create(user_id: User.all.sample.id, book_id: Book.all.sample.id, price: rand(100), to_sell: sell[rand(3)], book_condition: conditions[rand(3)], review: Faker::Quote.famous_last_words)
+#   # bc.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
+#   p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))
+# end
 
 tab=User.all
 5.times do |i|
@@ -164,7 +128,6 @@ tab=User.all
   puts "#{i + 1} follow created"
 end
 
-  
 title_tags.count.times do |i|
   tag = Tag.create(title:title_tags[i])
   puts "Tag n°#{i+1} created"
