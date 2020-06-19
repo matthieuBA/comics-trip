@@ -65,7 +65,7 @@ titles.count.times do |o|
   time = Benchmark.measure {
     puts titles[o]
     title = titles[o]
-    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 4, :api_key => ENV['GOOGLEBOOK_API'] })
+    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 4, :api_key => ENV["GOOGLEBOOK_API"] })
     books.each_with_index do |book, index|
       nb_total += 1
       puts "#{index + 1} times searched book #{o + 1} with #{nb_total} search requests on #{nb} created books"
@@ -83,9 +83,9 @@ titles.count.times do |o|
             colorg { p to_sell }
             case to_sell
             when "vente"
-              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, book_condition: conditions[rand(3)], book_picture_seed: thumbnail)
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, price: rand(100), to_sell: to_sell, review: book.description, book_condition: conditions[rand(3)], book_picture_seed: thumbnail)
             when "achat"
-              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, book_picture_seed: thumbnail)
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: book.description, book_picture_seed: thumbnail)
             when "critique"
               bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: book.description, book_picture_seed: thumbnail)
             end

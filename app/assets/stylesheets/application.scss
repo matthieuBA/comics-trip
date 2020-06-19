@@ -5160,6 +5160,48 @@
    border: 2px solid #333;
    border-radius: 25px;
  }
+
+ .body-views {
+  position: absolute;
+  bottom: 0;
+  padding-bottom:5rem;
+ }
+
+ .views {
+  // width: 2vw;
+  margin: 2rem 2rem;
+  padding: 2rem 2rem;
+  height: auto;
+  // max-height: 33rem;
+  // width:100;
+  margin-top:1rem;
+  padding-bottom:33rem;
+  max-width: 30rem;
+ }
+ .views-no-padding {
+  // width: 2vw;
+  margin: 2rem 2rem;
+  padding: 2rem 2rem;
+  height: auto;
+  // max-height: 33rem;
+  // width:100;
+  margin-top:1rem;
+  // padding-bottom:33rem;
+  max-width: 30rem;
+ }
+
+ .img-views {
+  max-width: 30rem;
+  max-height: 33rem;
+  margin-left: auto;
+  margin-right: auto;
+
+ }
+
+ .viewsbutton {
+  position: absolute;
+  bottom: 0;
+ }
  
  .card > hr {
    margin-right: 0;
