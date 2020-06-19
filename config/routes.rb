@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   resources :google_books, only: [:index]
 
   resources :charges
+
+  resources :gdpr, only: [:index]
 end

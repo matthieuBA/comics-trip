@@ -1,17 +1,38 @@
+<div class="container col-12 mx-auto">
+<div class="container text-center mt-4 mb-4">
 <%= button_to "Nouveau Message", new_user_private_message_path(current_user.id), method: :get , class: "btn btn-info align-self-center mx-auto" %>
+</div>
 
+    <div class="row justify-content-center mx-auto">
+    <div class="card col-5 mx-4">
+    ENVOI
 <% @send_messages.each do |message| %>
+    
+            <div class="card col-5 mx-auto mt-4 mb-4">
+            
     <% @message=message %>
-    ENVOYER
+    
     <%= render 'header' %>
     <%= render 'message_button' %>
 
-
+</div>
     <%end%>
+    </div>
 
-    <% @received_messages.each do |message| %>
-        RECU
-        <% @message=message %>
-        <%= render 'header' %>
-        <%= render 'message_button' %>
-        <%end%>
+    <div class="card col-5 mx-4">
+    RÉCEPTION
+<% @received_messages.each do |message| %>
+    
+            <div class="card col-5 mx-auto mt-4 mb-4">
+            
+    <% @message=message %>
+    
+    <%= render 'header' %>
+    <%= render 'message_button' %>
+
+</div>
+    <%end%>
+    </div>
+</div>
+</div>
+
