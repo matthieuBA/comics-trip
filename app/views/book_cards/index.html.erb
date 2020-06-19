@@ -6,10 +6,7 @@
 
 <%= render 'book_cards_view' %>
 
-<div
-    class="flex-container mx-auto">
-    <!--style="display: block; margin-left: auto; margin-right: auto;"-->
-    <% unless !params[:search].nil? %>i
-    <!--style="margin-top: 5rem; width: 500px;"-->
+<div class="flex-container mx-auto">
+    <% unless !params[:search].nil? %>
     <%=paginate @book_cards%>
 <% end %></div>

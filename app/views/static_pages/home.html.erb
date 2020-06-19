@@ -1,19 +1,24 @@
 <div class="jumbotron home home-vertical-center">
-  <div class="container text-center" >
-    <h1 class="text-white">Vos BD ont plusieurs vies! </h1>
-    <p class="lead text-white">
-      <br>
-      Vendez vos occasions
-      <br> <br>
-      Partagez vos critiques de bandes dessinées
-      <br> <br>
-    </p>
-  </div>
+    <div class="container text-center">
+        <h1 class="text-white">Vos BD ont plusieurs vies!
+        </h1>
+        <p class="lead text-white">
+            <br/>
+            Vendez vos occasions
+            <br/>
+            <br/>
+            Partagez vos critiques de bandes dessinées
+            <br/>
+            <br/>
+        </p>
+    </div>
 </div>
 
-<div class="mx-auto text-center" ><!--style="margin: 5rem 0rem 5rem 0rem; width: 500px;""-->
-  <h1>Nos BDs du moment :</h2>
+<div
+    class="mx-auto text-center">
+    <!--style="margin: 5rem 0rem 5rem 0rem; width: 500px;""-->
+    <h1>Nos BDs du moment :</h2>
 </div>
 
-<% @book_cards = BookCard.most_hit(nil, 8) %>
+<% @book_cards = BookCard.most_hit(nil, 3) %>
 <%= render 'book_cards/book_cards_view' %>

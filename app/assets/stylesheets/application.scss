@@ -5162,32 +5162,27 @@
  }
 
  .body-views {
-  position: absolute;
-  bottom: 0;
-  padding-bottom:5rem;
+
  }
 
  .views {
-  // width: 2vw;
   margin: 2rem 2rem;
-  padding: 2rem 2rem;
+  padding: 1rem 1rem;
   height: auto;
-  // max-height: 33rem;
-  // width:100;
   margin-top:1rem;
-  padding-bottom:33rem;
   max-width: 30rem;
  }
  .views-no-padding {
-  // width: 2vw;
   margin: 2rem 2rem;
   padding: 2rem 2rem;
   height: auto;
-  // max-height: 33rem;
-  // width:100;
   margin-top:1rem;
-  // padding-bottom:33rem;
   max-width: 30rem;
+ }
+
+ .to_sell {
+  margin: 1rem 1rem;
+  padding: 1rem 1rem;
  }
 
  .img-views {
@@ -5200,9 +5195,10 @@
 
  .viewsbutton {
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
  }
- 
+
+
  .card > hr {
    margin-right: 0;
    margin-left: 0;
