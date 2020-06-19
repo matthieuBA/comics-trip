@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <div class="product col-md-7">
                         <% if !@book_card.book_picture_seed.nil? %>
-                            <img class="card-img-top" style="height: auto; width:100;margin-top:1rem" src="<%= @book_card.book_picture_seed[0...-1]+"0" %>" alt="Card image cap"/>
+                            <img class="card-img-top "sstyle="height: auto; width:100;margin-top:1rem" src"<%= @book_card.book_picture_seed[0...-1]+"0" %>" alt="Card image cap"/>
                         <% end %>
                         <% if @book_card.book_picture_seed.nil? %>
                             <img class="card-img-top" style="height: auto; width:100;margin-top:1rem" src="<%= url_for(@book_card.book_picture.variant(resize: "600x600")) %>" alt=" Card image cap"/>
