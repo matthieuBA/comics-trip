@@ -1,7 +1,19 @@
-<div class="mx-auto text-center" style="margin-top: 5rem; width: 500px;">
-  <h1>Bienvenue sur Comics trip</h1>
-  <br/>
-  <h2>Nos 9 BDs les plus vues :</h2>
-</div>   
-    <% @book_cards=BookCard.most_hit(nil, 9) %>
-    <%= render 'book_cards/book_cards_view' %>
+<div class="jumbotron home home-vertical-center">
+  <div class="container text-center" >
+    <h1 class="text-white">Vos BD ont plusieurs vies! </h1>
+    <p class="lead text-white">
+      <br>
+      Vendez vos occasions
+      <br> <br>
+      Partagez vos critiques de bandes dessinées
+      <br> <br>
+    </p>
+  </div>
+</div>
+
+<div class="mx-auto text-center" style="margin: 5rem 0rem 5rem 0rem; width: 500px;">
+  <h1>Nos BDs du moment :</h2>
+</div>
+
+<% @book_cards = BookCard.most_hit(nil, 8) %>
+<%= render 'book_cards/book_cards_view' %>

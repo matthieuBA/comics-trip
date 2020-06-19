@@ -1,6 +1,10 @@
 <div class="mx-auto" style="margin-top: 5rem; width: 500px;">
-  <h1> Bienvenue sur Comics trip</h1>
+    <h1><%=@title%></h1>
 </div>
 
-<% @book_cards=BookCard.all %>
 <%= render 'book_cards_view' %>
+
+<div class="flex-container" style="display: block; margin-left: auto; margin-right: auto;">
+    <% unless !params[:search].nil? %>
+    <%=paginate @book_cards%>
+<% end %></div>

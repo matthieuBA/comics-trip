@@ -6,21 +6,32 @@
 /* JUMBOTRON STYLE HERE */
 .jumbotron{
   background: 
-linear-gradient(
-  rgba(0, 0, 0, 0.432), 
-  rgb(0, 0, 0)
-),
-url(https://images.unsplash.com/photo-1519563552094-a0f48181d523?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mahdiar-mahmoodi-4iknJXlUCjo-unsplash.jpg);
-background-repeat: no-repeat;
-// background-attachment: fixed;
-background-size: 100vw;
-background-position: bottom; 
-color:white !important;
+  linear-gradient(
+    rgba(0, 0, 0, 0.432), 
+    rgb(0, 0, 0)
+  ),
+  url(https://images.unsplash.com/photo-1519563552094-a0f48181d523?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mahdiar-mahmoodi-4iknJXlUCjo-unsplash.jpg);
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-size: 100vw;
+  background-position: bottom; 
+  color:white !important;
 
-height:90%;
-height:90vh;
+  height:90%;
+  height:90vh;
+}
 
+.home{
+  height: 40%;
+  height: 40vh;
+}
 
+.home-vertical-center{
+  min-height: 40%;
+  min-height: 40vh;
+
+  display: flex;
+  align-items: center;
 }
 
 .vertical-center {

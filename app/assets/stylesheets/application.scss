@@ -67,6 +67,10 @@
    -webkit-box-sizing: border-box;
            box-sizing: border-box;
  }
+
+ @-ms-viewport{
+  width: device-width;
+}
  
  html {
    font-family: sans-serif;
@@ -4651,7 +4655,23 @@
  .tab-content > .active {
    display: block;
  }
- 
+ .navbar-nav li:hover > ul.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu {
+  position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top:-6px;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+  text-decoration: underline;
+  transform: rotate(-90deg);
+} 
  .navbar {
    position: relative;
    display: -webkit-box;
@@ -4668,6 +4688,10 @@
    padding: 0.5rem 1rem;
  }
  
+ .navbar li{
+  padding-right: 2rem ;
+}
+
  .navbar .container,
  .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl {
    display: -webkit-box;
@@ -5218,6 +5242,17 @@
    -ms-flex-negative: 0;
        flex-shrink: 0;
    width: 100%;
+ }
+
+ .card-img-top-views {
+  // position: absolute;
+  height: auto;
+  max-height: 100%;
+  width: auto;
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
  
  .card-img,
@@ -11099,7 +11134,12 @@
  
  .pagination .page-link {
    border-radius: 425px 255px 25px 25px/25px 25px 5px 25px;
+   color: #333;
+   
  }
+ .pagination a:hover, .pagination a:active, .pagination a:focus {
+    color: gray;
+  }
  
  .progress {
    border: 2px solid #333;
