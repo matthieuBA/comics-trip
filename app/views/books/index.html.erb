@@ -1,10 +1,15 @@
-<div class="mx-auto" style="margin-top: 5rem; width: 500px;">
+<div
+    class="flex-container mx-auto">
+    <!--style="margin-top: 5rem; width: 500px;"-->
     <h1>
         Bienvenue sur Comics trip</h1>
 
 </div>
 
+
 <%= render 'books_view' %>
-<div class="flex-container" style="display: block; margin-left: auto; margin-right: auto;">
+<div
+    class="flex-container mx-auto">
+    <!--style="display: block; margin-left: auto; margin-right: auto;"-->
     <%=paginate @books%>
 </div>

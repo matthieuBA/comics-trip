@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @books = Book.page(params[:page]).per(12)
+    @books = Book.page(params[:page]).per(15)
   end
 
   def new
@@ -16,8 +16,8 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:success] = "Le livre a été créé avec succès. Merci pour l'ajout!"
-      redirect_to book_path(@book.id)
+      flash[:success] = "Le livre a été créé avec succès. Merci pour l'ajout! Vous pouvez maintenant créer votre annonce"
+      redirect_to session.delete(:return_to)
     else
       flash[:error] = "Essaye encore! La création de livre a échoué"
       render "new"

@@ -20,10 +20,6 @@
         <%= form.label :Isbn %>
         <%= form.text_field :book_id, class: 'form-control' %>
     </div>
-    <div class="field form-group-sm col-4">
-        <% options = "",options_from_collection_for_select(@books.order('isbn'), 'isbn', 'isbn') %>
-        <%= form.select :book_id,  options %>
-    </div>
 
     <% if @type=="vente" %>
         <div class="field form-group-sm col-4">
@@ -48,14 +44,13 @@
             <%= form.label :Critique %>
             <%= form.text_field :review, class: 'form-control' %>
         </div>
-    <% end %>
-
-    <% if @type=="vente" %>
+    <% else %>
         <div class="field form-group-sm col-4">
-            <%= form.label :Résumé %>
+            <%= form.label :Déscription %>
             <%= form.text_field :review, class: 'form-control' %>
         </div>
     <% end %>
+
 
     <div class="field form-group-sm col-4">
         <%= form.label :Tag %>

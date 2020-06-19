@@ -31,8 +31,13 @@ class BookCardsController < ApplicationController
         render "new"
       end
     else
+      @book = Book.new
+      @book_card = BookCard.new(book_card_params)
+      @books = Book.all
       flash[:error] = "Le livre portant l'isbn : " + book_card_params[:book_id] + " n'existe pas encore. Merci de créer la fiche du livre associé"
+      session[:return_to] ||= request.referer
       redirect_to new_book_path
+      # render "books/new"
     end
   end
 
@@ -80,7 +85,7 @@ class BookCardsController < ApplicationController
         @book_cards
       end
     elsif params[:type] && params[:user]
-      @title = "Liste #{params[:type]} de l' utilisateur #{User.find_by(id: params[:user]).email}"
+      @title = "Liste #{params[:type]} de l' utilisateur #{User.find_by(id: params[:user]).nickname}"
       @book_cards = BookCard.where(to_sell: params[:type], user_id: params[:user]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
@@ -90,7 +95,7 @@ class BookCardsController < ApplicationController
         @book_cards
       end
     elsif params[:type].nil? && params[:user]
-      @title = "Liste de l' utilisateur #{User.find_by(id: params[:user]).email}"
+      @title = "Liste de l' utilisateur #{User.find_by(id: params[:user]).nickname}"
       @book_cards = BookCard.where(user_id: params[:user]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
