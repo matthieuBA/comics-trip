@@ -12,4 +12,11 @@ class MoneyPot < ApplicationRecord
     UserMailer.order_email_buyer(buyer, buyer_money_pot).deliver_now
     UserMailer.order_email_seller(seller, seller_money_pot).deliver_now
   end
+
+  def self.add_money(user, amount)
+    money_pot = user.money_pot
+
+    money_pot.money += amount
+    money_pot.save
+  end
 end
