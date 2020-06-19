@@ -56,8 +56,10 @@ end
 10.times do |i|
   u_last = User.last
   u = User.create(password: "not_blank", email: Faker::Internet.email)
-  pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::Internet.email)
-  pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::Internet.email)
+  pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
+  pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
+  pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
+  pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
   puts "#{i + 1} users created"
 end
 
