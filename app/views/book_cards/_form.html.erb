@@ -48,14 +48,13 @@
             <%= form.label :Critique %>
             <%= form.text_field :review, class: 'form-control' %>
         </div>
-    <% end %>
-
-    <% if @type=="vente" %>
+    <% else %>
         <div class="field form-group-sm col-4">
-            <%= form.label :Résumé %>
+            <%= form.label :Déscription %>
             <%= form.text_field :review, class: 'form-control' %>
         </div>
     <% end %>
+
 
     <div class="field form-group-sm col-4">
         <%= form.label :Tag %>
