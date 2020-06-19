@@ -21,7 +21,7 @@ img = ["#{Rails.root}/vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
        "#{Rails.root}/vendor/img/waldemar-brandt-eIOPDU3Fkwk-unsplash.jpg"]
 
 books = []
-title_tags = ["BD d'exception", "BD dédicacée", "Tirage original"]
+title_tags = ["", "BD d'exception", "BD dédicacée", "Tirage original"]
 img = ["vendor/img/jaredd-craig-HH4WBGNyltc-unsplash.jpg",
        "vendor/img/lena-rose-ydHrpfgJNPo-unsplash.jpg",
        "vendor/img/miika-laaksonen-nUL9aPgGvgM-unsplash.jpg",
@@ -65,7 +65,7 @@ titles.count.times do |o|
   time = Benchmark.measure {
     puts titles[o]
     title = titles[o]
-    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 4, :api_key => "AIzaSyAiQSB1-DXCypy2LsM-TANMeTLAUurevYk" })
+    books = GoogleBooks.search("#{titles[o]}", { :country => "fr", :count => 4, :api_key => ENV['GOOGLEBOOK_API'] })
     books.each_with_index do |book, index|
       nb_total += 1
       puts "#{index + 1} times searched book #{o + 1} with #{nb_total} search requests on #{nb} created books"
@@ -87,7 +87,7 @@ titles.count.times do |o|
             when "achat"
               bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, book_picture_seed: thumbnail)
             when "critique"
-              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: Faker::Quote.famous_last_words, book_picture_seed: thumbnail)
+              bc = BookCard.create(user_id: User.all.sample.id, book_id: b.id, to_sell: to_sell, review: book.description, book_picture_seed: thumbnail)
             end
             #BookCard.last.book_picture.attach(io: File.open(img.sample), filename: "book_picture.jpg", content_type: "image/jpg")
             p = Punch.create(punchable_id: BookCard.all.sample.id, punchable_type: "BookCard", starts_at: Time.zone.now, ends_at: Time.zone.now, average_time: Time.zone.now, hits: rand(1..10))

@@ -61,5 +61,5 @@ en:
       not_found: "n'a pas été trouvé(e)! Ou ça?"
       not_locked: "n'était pas verrouillé(e), ou on a mis les clés déjà?"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} erreurs ont empêché ce(tte) %{resource} d'être sauvegardé(e):"
+        one: "Une erreur empêche ce %{resource} d'être sauvegardé:"
+        other: "Il y a %{count} erreurs qui ont empêché ce %{resource} d'être sauvegardé:"
