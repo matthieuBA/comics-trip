@@ -1,4 +1,6 @@
 <% sender=User.find_by(id: @message.sender_id) %>
 <% receiver=User.find_by(id: @message.recipient_id) %>
-<p class="card-text">Sender: <%=sender.email%></p>
-<p class="card-text">Receiver: <%=receiver.email%></p>
+<p class="card-text">Sender:
+    <%=sender.nickname%></p>
+<p class="card-text">Receiver:
+    <%=receiver.nickname%></p>
