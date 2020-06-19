@@ -1,18 +1,17 @@
-        
-        <% @send_messages.each do |message| %>
-            <% @message=message %>
-            SEND
-            <%= render 'header' %>
-            <%= render 'message_button' %>
-            <%= render 'delete_button' %>
+<%= button_to "Nouveau Message", new_user_private_message_path(current_user.id), method: :get , class: "btn btn-info align-self-center mx-auto" %>
 
-            
-        <%end%>
-        
-        <% @received_messages.each do |message| %>
-        RECEIVED
-            <% @message=message %>
-            <%= render 'header' %>
-            <%= render 'message_button' %>
-            <%= render 'delete_button' %>
+<% @send_messages.each do |message| %>
+    <% @message=message %>
+    ENVOYER
+    <%= render 'header' %>
+    <%= render 'message_button' %>
+
+
+    <%end%>
+
+    <% @received_messages.each do |message| %>
+        RECU
+        <% @message=message %>
+        <%= render 'header' %>
+        <%= render 'message_button' %>
         <%end%>

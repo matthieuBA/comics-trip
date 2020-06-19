@@ -1,1 +1,1 @@
-<div class="col"><%= button_to "message", private_message_path(@message.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
+<div class="col"><%= button_to "message", user_private_message_path(current_user.id, @message.id), method: :get , class: "btn btn-info align-self-center mx-auto" %></div>
