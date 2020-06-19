@@ -31,7 +31,6 @@
                     </div>
                     <div class="col-md-7">
                         <div class="product-title"><%= @book.title %></div>
-                        <div class="product-desc"><%= @book_card.review %></div>
                         <div class="product-rating">
                             <i class="fa fa-star gold"></i>
                             <i class="fa fa-star gold"></i>
@@ -66,9 +65,11 @@
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#service-two">ACHAT, VENTE OU CRITIQUE</a>
                                     </li>
+                                    <%unless @book_card.book_condition.nil?%>
                                     <li class="nav-item">
                                         <a class="nav-link " data-toggle="tab" href="#service-three">ETAT DU LIVRE</a>
                                     </li>
+                                    <%end%>
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
                                     <div class="tab-pane active" id="service-one">
@@ -93,6 +94,7 @@
                                                 <%= @book_card.hits %>
                                             </section>
                                         </div>
+                                        <%unless @book_card.book_condition.nil?%>
                                         <div class="tab-pane fade" id="service-three">
                                             <section class="container">
                                                 <p><%= @book_card.book_condition %></p>
@@ -101,6 +103,7 @@
                                                 <%= @book_card.hits %>
                                             </section>
                                         </div>
+                                        <%end%>
                                     </div>
                                 </div>
                             </div>
@@ -110,3 +113,4 @@
             </div>
         </div>
     </div>
+</div>
