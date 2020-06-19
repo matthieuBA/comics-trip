@@ -18,14 +18,14 @@
           </div>
         <% end %>
         <label class="amount">
-          <span>Amount: $5.00</span>
+          <span>Amount: €50.00</span>
         </label>
       </article>
     
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description=""
-              data-amount="500"
+              data-description="Payer"
+              data-amount="5000"
               data-locale="auto"></script>
     <% end %>
       </div>
