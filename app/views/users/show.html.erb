@@ -6,6 +6,9 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><%= @user.email %></li>
                     <li class="list-group-item">
+                      <a class="btn btn-sm btn-info" href=" <%= user_money_pot_path(current_user.id) %> " role="button">Voir ma cagnotte</a>
+                    </li>
+                    <li class="list-group-item">
                         <a class="btn btn-sm btn-info" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a>
                     </li>
                 </ul>
