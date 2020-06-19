@@ -1,11 +1,11 @@
-<%= form_with(model: @private_message, local: true) do |form| %>
-    <% if private_message.errors.any? %>
+<%= form_with(model: PrivateMessage.new) do |form| %>
+    <% if @private_message.errors.any? %>
         <div class="alert alert-danger alert-dismissible fade show" id="alert_message" role="alert">
-            <h2><%= pluralize(private_message.errors.count, "erreur") %>
+            <h2><%= pluralize(@private_message.errors.count, "erreur") %>
                 a empeché ce message d'être sauvegardé:</h2>
 
             <ul>
-                <% private_message.errors.full_messages.each do |message| %>
+                <% @private_message.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                 <% end %>
             </ul>
@@ -17,19 +17,15 @@
 
 
     <div class="form-row justify-content-center">
-        <div class="field form-group-sm col-4">
-            <%= form.label :destinataire %>
-            <%= form.text_field :recipient_id, class: 'form-control' %>
-        </div>
-        </div>
+
+        
+
         <div class="field form-group-sm col-4">
             <%= form.label :message %>
             <%= form.text_area :content, class: 'form-control' %>
         </div>
-        </div>
         <div class="actions">
             <%= form.submit 'Envoyer', class:"btn-sm btn-primary" %>
-        </div>
         </div>
     </div>
 <% end %>
