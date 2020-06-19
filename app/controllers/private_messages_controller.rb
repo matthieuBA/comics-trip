@@ -24,9 +24,6 @@ class PrivateMessagesController < ApplicationController
   end
 
   def create
-    puts "# " * 100
-    puts current_user.id
-    puts "# " * 100
     params[:private_message][:sender_id] = current_user.id
     @private_message = PrivateMessage.new(private_message_params)
     if @private_message.save
