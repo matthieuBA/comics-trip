@@ -1,4 +1,3 @@
 <div class="col"><%= button_to "Effacer le message", user_private_message_path(current_user.id, @message.id), method: :delete , class: "btn btn-danger align-self-center mx-auto" %>
     <%= button_to "Répondre", new_user_private_message_path(current_user.id, @message.id), method: :get , class: "btn btn-info align-self-center mx-auto" %>
-    <%=debug params%>
 </div>
