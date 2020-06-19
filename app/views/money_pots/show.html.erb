@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="text-center align-top">
+    <h1>Bienvenue sur votre cagnotte !</h1>
+  </div>
+
+  <div class="text-center">
+    <p>Vous avez actuellement <%= @money_pot.money %> dans votre cagnotte !</p>
+    <br><br>
+  </div>
+
+  <div class="text-center"
+    <p>Pour mettre de l'argent sur votre cagnotte, c'est ici !</p>
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <span>Amount: €50.00</span>
+        </label>
+      </article>
+    
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Payer"
+              data-amount="5000"
+              data-locale="auto"></script>
+    <% end %>
+      </div>
+</div>

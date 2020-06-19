@@ -85,3 +85,4 @@ gem 'googlebooks'
 
 gem 'kaminari'
 
+gem 'stripe'
