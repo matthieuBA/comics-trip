@@ -1,4 +1,4 @@
-<%= form_with(model: @private_message, local: true) do |form| %>
+<%= form_with(model: @private_message, url: user_private_messages_path(current_user.id) , local: true) do |form| %>
     <% if private_message.errors.any? %>
         <div class="alert alert-danger alert-dismissible fade show" id="alert_message" role="alert">
             <h2><%= pluralize(private_message.errors.count, "erreur") %>
@@ -19,17 +19,15 @@
     <div class="form-row justify-content-center">
         <div class="field form-group-sm col-4">
             <%= form.label :destinataire %>
-            <%= form.text_field :recipient_id, class: 'form-control' %>
-        </div>
-        </div>
-        <div class="field form-group-sm col-4">
-            <%= form.label :message %>
-            <%= form.text_area :content, class: 'form-control' %>
-        </div>
-        </div>
-        <div class="actions">
-            <%= form.submit 'Envoyer', class:"btn-sm btn-primary" %>
-        </div>
+            <%= form.text_field :recipient_id, class: 'form-control', value:@send_to %>
+            <%= debug params %>
         </div>
     </div>
-<% end %>
+    <div class="field form-group-sm col-4">
+        <%= form.label :message %>
+        <%= form.text_area :content, class: 'form-control' %>
+    </div>
+</div>
+<div class="actions">
+    <%= form.submit 'Envoyer', class:"btn-sm btn-primary" %>
+</div></div></div><% end %>
