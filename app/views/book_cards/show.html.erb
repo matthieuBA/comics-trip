@@ -116,7 +116,7 @@
                                             <%end%>
                                             <div class="tab-pane fade" id="service-four">
                                                 <section class="container">
-                                                    <p><%= @user.email %></p>
+                                                    <p><%= @user.nickname %></p>
                                                     <% if !current_user.nil? %>
                                                         <% user=User.find_by_id(@book_card.user_id) %>
                                                         <% if current_user.followed_users?(user.id) %>

@@ -1,12 +1,16 @@
 <div class="container">
-    <div class="text-center"><!--style="margin-top: 5rem; text-align: center"-->
+    <div
+        class="text-center">
+        <!--style="margin-top: 5rem; text-align: center"-->
         <h1>Bienvenue sur votre  profil :</h1>
-        <div class="card mx-auto align-content-center text-center" ><!--style="margin-top: 5rem;"-->
+        <div
+            class="card mx-auto align-content-center text-center">
+            <!--style="margin-top: 5rem;"-->
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><%= @user.email %></li>
+                    <li class="list-group-item"><%= @user.nickname %></li>
                     <li class="list-group-item">
-                      <a class="btn btn-sm btn-info" href=" <%= user_money_pot_path(current_user.id) %> " role="button">Voir ma cagnotte</a>
+                        <a class="btn btn-sm btn-info" href=" <%= user_money_pot_path(current_user.id) %> " role="button">Voir ma cagnotte</a>
                     </li>
                     <li class="list-group-item">
                         <a class="btn btn-sm btn-info" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a>
@@ -33,7 +37,7 @@
         utilisateurs :
         <br/>
         <% User.find(current_user.id).followees.each do |followee|%>
-        <%=followee.email%>
+        <%=followee.nickname%>
         <%= button_to "Ne plus suivre", follow_relationship_path(:id => followee.id), :method => :delete, :class => "btn btn-sm btn-info align-self-center mx-auto"%>
         <br/>
         <%end%>
@@ -42,7 +46,7 @@
         utilisateurs:
         <br/>
         <% User.find(current_user.id).followers.each do |follower|%>
-        <%=follower.email%>
+        <%=follower.nickname%>
         <br/>
         <%end%>
     </div>
