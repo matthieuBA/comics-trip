@@ -5206,6 +5206,18 @@
   bottom: 1rem;
  }
 
+ .views_to_sell {
+  position: absolute;
+  bottom: 5rem;
+  font-size: 75%;
+ }
+
+ .views_title {
+  position: absolute;
+  bottom: 10rem;
+ }
+
+
 
  .card > hr {
    margin-right: 0;
@@ -7299,6 +7311,16 @@
  .bg-success {
    background-color: #28a745 !important;
  }
+
+.bg-sell-red {
+  background-color: #f5c6cb !important;
+} 
+.bg-sell-blue{
+  background-color: #bee5eb !important;
+} 
+.bg-sell-green {
+  background-color: #c3e6cb !important;
+}
  
  a.bg-success:hover, a.bg-success:focus,
  button.bg-success:hover,

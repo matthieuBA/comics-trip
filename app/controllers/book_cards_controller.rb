@@ -69,7 +69,7 @@ class BookCardsController < ApplicationController
       @book_cards = BookCard.search(params[:search])
       if @book_cards.empty?
         @book_cards = BookCard.all
-        flash.notice = "Aucune recherche ne correspond à vos critères"
+        flash.alert = "Aucune recherche ne correspond à vos critères"
         render :index
       else
         @book_cards
@@ -79,18 +79,25 @@ class BookCardsController < ApplicationController
       @book_cards = BookCard.where(to_sell: params[:type]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
-        flash.notice = "Aucune annonce ne correspond à vos critères"
-        render :index
+        flash.alert = "Aucune annonce ne correspond à vos critères"
+        redirect_to request.referrer
       else
         @book_cards
       end
     elsif params[:type] && params[:user]
-      @title = "Liste #{params[:type]} de l' utilisateur #{User.find_by(id: params[:user]).nickname}"
+      if params[:type] == "achat"
+        type = "des annonces de recherches"
+      elsif params[:type] == "vente"
+        type = "des annonces de ventes"
+      elsif params[:type] == "critique"
+        type = "des critques"
+      end
+      @title = "Liste #{type} de l' utilisateur #{User.find_by(id: params[:user]).nickname}"
       @book_cards = BookCard.where(to_sell: params[:type], user_id: params[:user]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
-        flash.notice = "Aucune annonce ne correspond à vos critères"
-        render :index
+        flash.alert = "Aucune annonce ne correspond à vos critères"
+        redirect_to request.referrer
       else
         @book_cards
       end
@@ -99,8 +106,8 @@ class BookCardsController < ApplicationController
       @book_cards = BookCard.where(user_id: params[:user]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
-        flash.notice = "Aucune annonce ne correspond à vos critères"
-        render :index
+        flash.alert = "Aucune annonce ne correspond à vos critères"
+        redirect_to request.referrer
       else
         @book_cards
       end
