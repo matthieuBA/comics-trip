@@ -4,11 +4,11 @@
     </div>
 
     <div class="row justify-content-center mx-auto">
-        <div class="card private col-5 mx-4">
+        <div class="card private col-auto p-4 m-4">
             ENVOI
             <% @send_messages.each do|message| %>
 
-            <div class="card message col-5 mx-auto mt-4 mb-4">
+            <div class="card message col-auto mx-auto p-4 m-4">
                 <% @message=message %>
                 <%= render 'header' %>
                 <%= render 'message_button' %>
@@ -16,10 +16,10 @@
             <%end%>
         </div>
 
-        <div class="card private col-5 mx-4">
+        <div class="card private col-auto p-4 m-4">
             RÉCEPTION
             <% @received_messages.each do|message| %>
-            <div class="card message col-5 mx-auto mt-4 mb-4">
+            <div class="card message col-auto mx-auto p-4 m-4">
                 <% @message=message %>
                 <%= render 'header' %>
                 <%= render 'message_button' %>
