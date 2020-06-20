@@ -4,7 +4,8 @@
         <% @book_cards.each do |book_card| %>
             <% user = User.find_by(id: book_card.user_id) %>
             <% book = Book.find_by(id: book_card.book_id) %>
-            <div class="card col-4 views">
+
+            <div class="card dark col-4 views">
 
                 <% if !book_card.book_picture_seed.nil? %>
                     <img class="card-img-top img-views mx-auto" src=" <%= book_card.book_picture_seed %> " alt="Card image cap"/>
@@ -14,18 +15,35 @@
                     class="card-img-top img-views mx-auto" src="<%= url_for(book_card.book_picture.variant(resize: "300x300")) %>" alt=" Card image cap"/>
                 <!--style="height: auto; width:100;margin-top:1rem; padding-bottom:33rem"-->
                 <% end %>
-                <div class="card-body body-views">
-                    <h5 class="card-title mx-auto"><%=book.title%></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><%= book_card.price %></h6>
+                <div class="card-body body-views pb-5">
+                    <p class="card-title mx-auto text-center"><%=book.title%></p>
+                    <% if book_card.price? %>
+                        <p class="card-subtitle mb-2 py-5 "><%= book_card.price %>€</p>
+                    <% end %>
                 </div>
 
-
+                <% if book_card.to_sell=="vente" %>
+                    <%sell="EN VENTE"%>
+                <% end %>
+                <% if book_card.to_sell=="achat" %>
+                    <%sell="ANNONCE DE RECHERCHE"%>
+                <% end %>
+                <% if book_card.to_sell=="critique" %>
+                    <%sell="CRITIQUE DE BD"%>
+                <% end %>
                 <div class="d-flex justify-content-sm-center">
+                    <div class="card-body views_to_sell pt-auto">
+                        <ul class="list-group list-group-flush">
+                            <p class="text-sm-left list-group-item bg-secondary text-white"><%=sell%></p>
+                        </ul>
+                    </div>
+
                     <div class="row to_sell">
                         <div class="card-body body-views">
-                            <p class="card-text text-center pd-auto"><%= book_card.to_sell %></p>
+                            <p class="card-text text-center pd-auto"></p>
                         </div>
                     </div>
+
 
                     <div class="row viewsbutton mx-auto">
                         <div class="col">
