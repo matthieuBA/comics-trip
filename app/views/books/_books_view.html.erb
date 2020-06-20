@@ -2,7 +2,7 @@
 <div class="container col-12 mx-auto">
     <div class="row justify-content-center mx-auto">
         <% @books.each do |book| %>
-            <div class="card col-4 views">
+            <div class="card col-4 views p-4 m-4">
                 <% if !book.picture.nil? %>
                     <img class="card-img-top img-views mx-auto" src="<%=book.picture[0...-1]+"2"%>" alt="Card image cap"/>
                 <% else %>

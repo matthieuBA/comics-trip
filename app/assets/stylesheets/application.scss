@@ -11308,6 +11308,21 @@
    border-radius: 555px 25px 15px 25px/25px 5px 35px 555px;
  }
  
+ .jumbotron {
+  background: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.432), 
+    rgb(0, 0, 0)
+  ),
+  url(https://images.unsplash.com/photo-1519563552094-a0f48181d523?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mahdiar-mahmoodi-4iknJXlUCjo-unsplash.jpg);
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom; 
+  color:white !important;
+  height: auto;
+ }
+ 
  .toast {
    border-radius: 10px 10px 15px 5px/5px 15px 5px 15px;
  }

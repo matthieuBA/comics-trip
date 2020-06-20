@@ -13,31 +13,10 @@
   url(https://images.unsplash.com/photo-1519563552094-a0f48181d523?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mahdiar-mahmoodi-4iknJXlUCjo-unsplash.jpg);
   background-repeat: no-repeat;
   // background-attachment: fixed;
-  background-size: 100vw;
+  background-size: cover;
   background-position: bottom; 
   color:white !important;
-
-  height:90%;
-  height:90vh;
+  height: auto;
 }
 
-.home{
-  height: 40%;
-  height: 40vh;
-}
 
-.home-vertical-center{
-  min-height: 40%;
-  min-height: 40vh;
-
-  display: flex;
-  align-items: center;
-}
-
-.vertical-center {
-  min-height: 90%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 90vh; /* These two lines are counted as one :-)       */
-
-  display: flex;
-  align-items: center;
-}

@@ -1,58 +1,51 @@
-<div class="jumbotron vertical-center">
-  <div class="container text-center" >
-    <%= image_tag("logos/logo.png", width: '250px')%>
-    <h1 class="text-white">Vos BD ont plusieurs vies! </h1>
-    <p class="lead text-white">
-      <br>
-      Vendez vos occasions
-      <br> <br>
-      Partagez vos critiques de bandes dessinées
-      <br> <br>
-    </p>
-    
-    <div class="flex-container" >
-      <div class="row">
-        <div class="col" >
-          <td><%= button_to "Parcourez les Fiches »", book_cards_path, method: :get , class: "btn btn-info btn-lg"%></td>
+<div class="jumbotron landing ">
+    <div
+        class="container text-center">
+        <!--<%= image_tag("logos/logo.png", width: '250px')%>-->
+        <h1 class="text-white p-2 pt-5 mt-5">Vos BD ont plusieurs vies!</h1>
+        <p class="lead text-white p-1">Vendez vos occasions</p>
+        <p class="lead text-white p-1 pb-5">Partagez vos critiques de bandes dessinées</p>
+        <div class="container landing-buttons">
+            <div class="row">
+                <div class="col col-auto mx-auto pt-5 mt-5">
+                    <td><%= button_to "Parcourez les Fiches »", book_cards_path, method: :get , class: "btn btn-info btn-lg"%></td>
+                </div>
+                <div class="col col-auto mx-auto pt-5 mt-5">
+                    <td><%= button_to "Vendez vos BD »", new_book_card_path, method: :get , class: "btn btn-info btn-lg"%></td>
+                </div>
+            </div>
         </div>
-        <div class="col" >
-          <td><%= button_to "Vendez vos BD »", new_book_card_path, method: :get , class: "btn btn-info btn-lg"%></td>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
 <div class="container-fluid">
-<div class="container">
-    <h2>Parcours du vendeur</h2>
-      <ol>
-        <li>Inscrivez vous</li>
-        <li>Créez votre fiche de vente de BDs pour la proposer à la communauté.</li>
-        <li>Soit vous êtes directement contacté par un acheteur, soit l’acheteur passe via la plateforme Moneypot pour votre paiement.</li>
-        <li>Remettez votre BD directement à l’acheteur ou expédiez la BD par la poste.</li>
-      </ol>
-    <h2>Parcours de l'acheteur</h2>
-      <ol>
-        <li>Inscrivez vous</li>
-        <li>Accédez à la liste des BDs en vente par les particuliers.</li>
-        <li>Soit vous contactez directement le vendeur soit vous achetez directement la BD via notre plateforme MoneyPot.</li>
-        <li>Réceptionnez votre BD directement auprès du vendeur ou recevez la BD par la poste après l’envoi du vendeur.</li>
-      </ol>
-    <h2>Critiques de lectures</h2>
-      <ol>
-        <li>Inscrivez vous.</li>
-        <li>Accédez à la liste des critiques de lectures faite par nos lecteurs.</li>
-        <li>Créez votre fiche de critique de lecture sur votre BD.</li>
-        <li>Postez la pour qu’elle soit visible par toute la communauté!</li>
-      </ol>
-    <h2>Recherche d'exemplaires</h2>
-      <ol>
-        <li>Inscrivez vous.</li>
-        <li>Accédez à la liste des BDs en vente par les particuliers, cherchez votre bonheur.</li>
-        <li>Si vous ne trouvez pas la BD que vous recherchez, créez votre fiche de recherche de DBs pour qu’elle soit visible par toute la communauté.</li>
-        <li>Soit vous êtes directement contacté par un vendeur, soit un vendeur la mettra en vente sur la plateforme.</li>
-      </ol>
-</div>
-</div>
-
-</div>
+    <div class="container">
+        <h2>Parcours du vendeur</h2>
+        <ol>
+            <li>Inscrivez vous</li>
+            <li>Créez votre fiche de vente de BDs pour la proposer à la communauté.</li>
+            <li>Soit vous êtes directement contacté par un acheteur, soit l’acheteur passe via la plateforme Moneypot pour votre paiement.</li>
+            <li>Remettez votre BD directement à l’acheteur ou expédiez la BD par la poste.</li>
+        </ol>
+        <h2>Parcours de l'acheteur</h2>
+        <ol>
+            <li>Inscrivez vous</li>
+            <li>Accédez à la liste des BDs en vente par les particuliers.</li>
+            <li>Soit vous contactez directement le vendeur soit vous achetez directement la BD via notre plateforme MoneyPot.</li>
+            <li>Réceptionnez votre BD directement auprès du vendeur ou recevez la BD par la poste après l’envoi du vendeur.</li>
+        </ol>
+        <h2>Critiques de lectures</h2>
+        <ol>
+            <li>Inscrivez vous.</li>
+            <li>Accédez à la liste des critiques de lectures faite par nos lecteurs.</li>
+            <li>Créez votre fiche de critique de lecture sur votre BD.</li>
+            <li>Postez la pour qu’elle soit visible par toute la communauté!</li>
+        </ol>
+        <h2>Recherche d'exemplaires</h2>
+        <ol>
+            <li>Inscrivez vous.</li>
+            <li>Accédez à la liste des BDs en vente par les particuliers, cherchez votre bonheur.</li>
+            <li>Si vous ne trouvez pas la BD que vous recherchez, créez votre fiche de recherche de DBs pour qu’elle soit visible par toute la communauté.</li>
+            <li>Soit vous êtes directement contacté par un vendeur, soit un vendeur la mettra en vente sur la plateforme.</li>
+        </ol>
+    </div>
+</div></div>

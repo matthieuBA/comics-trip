@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="<%= root_path %>">Accueil</a>
             </li>
@@ -34,9 +34,9 @@
 
 
         <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+                <li class="nav-item dropdown">
 
-            <li class="nav-item dropdown">
-                <% if user_signed_in? %>
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Mon compte / Déconnexion
                     </a>
@@ -46,19 +46,21 @@
                         <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
                         <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="DELETE">Déconnexion</a>
                     </div>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mes Annonces
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="<%=book_cards_path+"?&user=#{current_user.id}"%>">Toutes mes annonces</a>
-                            <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente&user=#{current_user.id}"%>">Mes annonces de ventes</a>
-                            <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique&user=#{current_user.id}"%>">Mes critiques de BD</a>
-                            <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat&user=#{current_user.id}"%>">Mes annonces de recherches</a>
-                        </div>
-                    </li>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mes Annonces
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="<%=book_cards_path+"?&user=#{current_user.id}"%>">Toutes mes annonces</a>
+                        <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente&user=#{current_user.id}"%>">Mes annonces de ventes</a>
+                        <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique&user=#{current_user.id}"%>">Mes critiques de BD</a>
+                        <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat&user=#{current_user.id}"%>">Mes annonces de recherches</a>
+                    </div>
+                </li>
 
-                <% else %>
+            <% else %>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Inscription / Connexion
                     </a>
@@ -66,12 +68,16 @@
                         <a class="dropdown-item" href="<%=new_user_registration_path%>">Inscription</a>
                         <a class="dropdown-item" href="<%=user_session_path%>">Connexion</a>
                     </div>
-                <% end %>
-            </li>
-            <li class="nav-item pt-2 pr-0">
+                </li>
+            <% end %>
+
+            <li class="nav-item">
                 <%= form_tag(book_cards_path, :method => "get", id: "search-form") do %>
-                    <%= text_field_tag :search, params[:search], placeholder: "Rechercher un livre" %>
-                    <%= submit_tag "Rechercher", :name => nil %>
+                    <%= text_field_tag :search, params[:search], placeholder: "Rechercher" %>
+                    <%= button_tag(type: "submit", class: "btn btn-default") do %>
+
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    <% end %>
                 <% end %>
             </li>
         </ul>
