@@ -51,7 +51,7 @@
                             <% end %>
 
                             <% if !current_user.nil? && @book_card.user_id != current_user.id && @book_card.to_sell == "vente" %>
-                                <%= button_to "buy with money pot", edit_user_money_pot_path(current_user.id), method: :get, class: "btn btn-danger"%>
+                                <%= button_to "Acheter avec la cagnotte", edit_user_money_pot_path(current_user.id), method: :get, class: "btn btn-danger"%>
                             <% end %>
                             <% if current_user.nil? && @book_card.to_sell == "vente" %>
                                 <%= button_to "connectez vous pour acheter", new_user_session_path, method: :get, class: "btn btn-danger"%>
