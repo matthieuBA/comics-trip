@@ -1,6 +1,11 @@
 <div class="row p-auto ">
     <p class="bs-component">
         <%= button_to "Effacer le message", user_private_message_path(current_user.id, @message.id), method: :delete , class: "btn btn-danger" %>
-        <%= button_to "Répondre", new_user_private_message_path(current_user.id, @message.id), method: :get , class: "btn btn-info" %>
+        <%if current_user.id==@message.recipient_id%>
+        <%user=@message.sender_id%>
+        <%else%>
+        <%user=@message.recipient_id%>
+        <%end%>
+        <%= button_to "Répondre", new_user_private_message_path(current_user.id, user), method: :get , class: "btn btn-info" %>
     </p>
 </div>

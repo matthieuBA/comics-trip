@@ -57,6 +57,14 @@
                                 <%= button_to "connectez vous pour acheter", new_user_session_path, method: :get, class: "btn btn-danger"%>
                             <% end %>
 
+                            <% if !current_user.nil? && @book_card.user_id != current_user.id && @book_card.to_sell == "achat" %>
+                                <%= button_to "contacter l'acheteur", new_user_private_message_path(current_user.id)+".#{@book_card.user_id}", method: :get, class: "btn btn-danger"%>
+                            <% end %>
+                            <% if current_user.nil? && @book_card.to_sell == "vente" %>
+                                <%= button_to "connectez vous pour acheter", new_user_session_path, method: :get, class: "btn btn-danger"%>
+                            <% end %>
+
+
                             nombre de vues:
                             <%= @book_card.hits %>
                             <hr>
