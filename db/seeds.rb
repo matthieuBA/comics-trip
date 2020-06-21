@@ -6,6 +6,8 @@ PrivateMessage.destroy_all
 Follow.destroy_all
 Tag.destroy_all
 Join.destroy_all
+Comment.destroy_all
+
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vente", "achat", "critique"]
@@ -53,9 +55,11 @@ def colorb(color = 34)
   printf "\033[0m"
 end
 
-10.times do |i|
+25.times do |i|
   u_last = User.last
-  u = User.create(password: "not_blank", email: Faker::Internet.email)
+  nicknames = [Faker::DcComics.hero, Faker::DcComics.heroine, Faker::DcComics.villain, Faker::DcComics.name]
+  
+  u = User.create(password: "not_blank", email: nicknames.sample+((u_last.id+1).to_s)+"@yopmail.com")
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
@@ -97,6 +101,9 @@ titles.count.times do |o|
             puts "#{nb} books created"
             out << titles[o]
             puts "added #{book.title} from index #{o}"
+            rand(1..5).times do |i|
+              c=Comment.create(user_id: User.all.sample.id, book_card_id: BookCard.last.id, content: Faker::Books::Dune.quote)
+            end
           end
         end
       end
