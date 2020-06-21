@@ -11,6 +11,9 @@ class BookCard < ApplicationRecord
   # Active Storage
   has_one_attached :book_picture
 
+  # Comments
+  has_many :comments
+
   def self.search(search)
     books = Book.where("title ILIKE ? OR author ILIKE ? OR genre ILIKE ? or isbn ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   

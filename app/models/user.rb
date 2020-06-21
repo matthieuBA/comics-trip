@@ -26,6 +26,9 @@ class User < ApplicationRecord
   has_many :following_users, foreign_key: :followee_id, class_name: "Follow"
   has_many :followers, through: :following_users, source: :follower
 
+  #Comment
+  has_many :comments
+
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
