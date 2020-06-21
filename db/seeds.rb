@@ -55,11 +55,11 @@ def colorb(color = 34)
   printf "\033[0m"
 end
 
-25.times do |i|
+20.times do |i|
   u_last = User.last
   nicknames = [Faker::DcComics.hero, Faker::DcComics.heroine, Faker::DcComics.villain, Faker::DcComics.name]
   
-  u = User.create(password: "not_blank", email: nicknames.sample+((u_last.id+1).to_s)+"@yopmail.com")
+  u = User.create(password: "not_blank", email: nicknames.sample+((u_last.id+i).to_s)+"@yopmail.com")
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
@@ -120,9 +120,9 @@ end
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
 p out
 
-tab = User.all
-5.times do |i|
-  fl = Follow.create(follower_id: tab[i].id, followee_id: tab[i + 1].id)
+nb_user=User.first.id
+15.times do |i|
+  fl = Follow.create(follower_id: nb_user+i, followee_id: nb_user+i+1)
   puts "#{i + 1} follow created"
 end
 
