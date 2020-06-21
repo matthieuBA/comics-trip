@@ -2,7 +2,7 @@
     <div class="content-wrapper">
         <div class="item-container">
             <div class="container">
-                <div class="container text-center">
+                <div class="container text-center p-5">
                     <%if @book_card.to_sell=="critique"%>
                         <h1>Critique de lecteur</h1>
                     <% end %>
@@ -10,7 +10,7 @@
                         <h1>Annonce de vente</h1>
                     <% end %>
                     <%if @book_card.to_sell=="achat"%>
-                        <h1>Annonce de recherce</h1>
+                        <h1>Annonce de recherche</h1>
                     <% end %>
                 </div>
                 <div class="col-md-12">
