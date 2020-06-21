@@ -49,9 +49,13 @@
                                 <div class="product-price">€
                                     <%= @book_card.price %></div>
                             <% end %>
+
                             <% if !current_user.nil? && @book_card.user_id != current_user.id && @book_card.to_sell == "vente" %>
                                 <%= button_to "buy with money pot", edit_user_money_pot_path(current_user.id), method: :get, class: "btn btn-danger"%>
+                            <% else %>
+                                <%= button_to "connectez vous pour acheter", new_user_session_path, method: :get, class: "btn btn-danger"%>
                             <% end %>
+
                             NOMBRE DE VUES:
                             <%= @book_card.hits %>
 
@@ -127,6 +131,8 @@
                                                         <% else %>
                                                             <%= button_to "Suivre", follow_relationships_path(:id => @book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
                                                         <% end %>
+                                                    <% else %>
+                                                        <%= button_to "Suivre", follow_relationships_path(:id => @book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
                                                     <% end %>
                                                 </section>
                                             </div>
