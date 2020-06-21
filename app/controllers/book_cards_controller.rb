@@ -6,6 +6,8 @@ class BookCardsController < ApplicationController
     @book_card.punch(request)
     @user = User.find_by(id: @book_card.user_id)
     @book = Book.find_by(id: @book_card.book_id)
+    @comments = Comment.where(book_card_id: params[:id])
+    @comment = Comment.new(content: params[:content], book_card_id: params[:id])
   end
 
   def new

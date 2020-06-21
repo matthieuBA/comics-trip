@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :book_cards do
     resources :book_pictures, only: [:create]
     resources :tags, only: [:create]
+    resources :comments
   end
   resources :books
 
