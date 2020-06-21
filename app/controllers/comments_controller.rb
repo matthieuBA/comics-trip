@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.book_card_id = @book_card.id
     if @comment.save
-      redirect_to book_card_comment_path(@book_card.id, @comment.id)
+      redirect_to book_card_path(@book_card.id)
     else
       flash[:error] = "commentaire non sauvegardé #{@comment.errors.messages}"
       render ("new")
