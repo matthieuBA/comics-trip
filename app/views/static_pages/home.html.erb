@@ -22,3 +22,21 @@
 
 <% @book_cards = BookCard.most_hit(nil, 3) %>
 <%= render 'book_cards/book_cards_view' %>
+<div class="mx-auto text-center">
+    <!--style="margin: 5rem 0rem 5rem 0rem; width: 500px;""-->
+    <h1>Plus de BDs :</h2>
+        <div class="container landing-buttons">
+            <div class="row">
+                <div class="col col-auto mx-auto pt-5 mt-5">
+                    <td><%= button_to "Toutes nos BD»", book_cards_path, method: :get , class: "btn btn-info btn-lg"%></td>
+                </div>
+                <div class="col col-auto mx-auto pt-5 mt-5">
+                    <td><%= button_to "Nos BD en vente»", book_cards_path+"?&type=vente", method: :get , class: "btn btn-info btn-lg"%></td>
+                </div>
+                <div class="col col-auto mx-auto pt-5 mt-5">
+                    <td><%= button_to "Vendez vos BD »", new_book_card_path, method: :get , class: "btn btn-info btn-lg"%></td>
+                </div>
+            </div>
+        </div>
+</div>
+
