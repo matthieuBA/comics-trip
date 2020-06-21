@@ -88,6 +88,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#service-four">AUTEUR DE L'ANNONCE</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#service-five">COMMENTAIRES</a>
+                                        </li>
                                     </ul>
                                     <div id="myTabContent" class="tab-content">
                                         <div class="tab-pane active" id="service-one">
@@ -125,6 +128,16 @@
                                                             <%= button_to "Suivre", follow_relationships_path(:id => @book_card.user_id), :method => :post, :class => "btn btn-info align-self-center mx-auto"%>
                                                         <% end %>
                                                     <% end %>
+                                                </section>
+                                            </div>
+                                            <div class="tab-pane fade" id="service-five">
+                                                <section class="container">
+
+
+                                                    <%= render 'comments/index' %>
+                                                    <%= button_to "Nouveau commentaire", new_book_card_comment_path(@comment.book_card_id, @comment.id), method: :get, class: "btn btn-danger"%>
+
+
                                                 </section>
                                             </div>
                                         </div>
