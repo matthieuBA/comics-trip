@@ -77,7 +77,14 @@ class BookCardsController < ApplicationController
         @book_cards
       end
     elsif params[:type] && params[:user].nil?
-      @title = "Liste #{params[:type]} filtrée"
+      if params[:type] == "achat"
+        type = "des annonces de recherches"
+      elsif params[:type] == "vente"
+        type = "des annonces de ventes"
+      elsif params[:type] == "critique"
+        type = "des critques"
+      end
+      @title = "Liste #{type}"
       @book_cards = BookCard.where(to_sell: params[:type]).page(params[:page]).per(20)
       if @book_cards.empty?
         @book_cards = BookCard.page(params[:page]).per(20)
