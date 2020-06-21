@@ -56,9 +56,8 @@
                                 <%= button_to "connectez vous pour acheter", new_user_session_path, method: :get, class: "btn btn-danger"%>
                             <% end %>
 
-                            NOMBRE DE VUES:
+                            nombre de vues:
                             <%= @book_card.hits %>
-
                             <hr>
                                 <% if !current_user.nil? && @book_card.user_id == current_user.id %>
                                     <div class="container">
