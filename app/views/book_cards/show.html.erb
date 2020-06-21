@@ -97,7 +97,7 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content">
                                         <div class="tab-pane active" id="service-one">
-                                            <section class="container">
+                                            <section class="container pl-0 ml-5 pt-5">
                                                 <% BookCard.find(@book_card.id).tags.each do |tag| %>
                                                     <p>
                                                         <%= tag.title %>
@@ -108,20 +108,20 @@
                                                 </section>
                                             </div>
                                             <div class="tab-pane fade" id="service-two">
-                                                <section class="container">
+                                                <section class="container pl-0 ml-5 pt-5">
                                                     <% book = Book.find_by(id:@book_card.book_id) %>
                                                     <p><%= book.genre %></p>
                                                 </section>
                                             </div>
                                             <%unless @book_card.book_condition.nil?%>
                                             <div class="tab-pane fade" id="service-three">
-                                                <section class="container">
+                                                <section class="container pl-0 ml-5 pt-5">
                                                     <p><%= @book_card.book_condition %></p>
                                                 </section>
                                             </div>
                                             <%end%>
                                             <div class="tab-pane fade" id="service-four">
-                                                <section class="container">
+                                                <section class="container pl-0 ml-5 pt-5">
                                                     <p><%= @user.nickname %></p>
                                                     <% if !current_user.nil? %>
                                                         <% user=User.find_by_id(@book_card.user_id) %>
@@ -136,7 +136,7 @@
                                                 </section>
                                             </div>
                                             <div class="tab-pane fade" id="service-five">
-                                                <section class="container">
+                                                <section class="container pl-0 ml-5 pt-5">
 
 
                                                     <%= render 'comments/index' %>
