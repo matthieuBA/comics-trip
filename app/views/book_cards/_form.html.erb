@@ -42,12 +42,12 @@
     <% if @type=="critique" %>
         <div class="field form-group-sm col-4">
             <%= form.label :Critique %>
-            <%= form.text_field :review, class: 'form-control' %>
+            <%= form.text_area :review, class: 'form-control' %>
         </div>
     <% else %>
         <div class="field form-group-sm col-4">
             <%= form.label :Déscription %>
-            <%= form.text_field :review, class: 'form-control' %>
+            <%= form.text_area :review, class: 'form-control' %>
         </div>
     <% end %>
 
