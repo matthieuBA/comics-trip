@@ -4,13 +4,13 @@
             <div class="container">
                 <div class="container text-center p-5">
                     <%if @book_card.to_sell=="critique"%>
-                        <h1>Critique de lecteur</h1>
+                        <h2>Critique de lecteur</h2>
                     <% end %>
                     <%if @book_card.to_sell=="vente"%>
-                        <h1>Annonce de vente</h1>
+                        <h2>Annonce de vente</h2>
                     <% end %>
                     <%if @book_card.to_sell=="achat"%>
-                        <h1>Annonce de recherche</h1>
+                        <h2>Annonce de recherche</h2>
                     <% end %>
                 </div>
                 <div class="col-md-12">
@@ -36,7 +36,7 @@
                         <% end %>
                     </div>
                     <div class="col-md-7">
-                        <div class="product-title"><%= @book.title %></div>
+                        <div class="product-title"><h1><%= @book.title %><h1></div>
                         <div class="product-rating">
                             <i class="fa fa-star gold"></i>
                             <i class="fa fa-star gold"></i>
