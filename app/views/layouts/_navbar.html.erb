@@ -15,10 +15,10 @@
                     BDs
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente"%>">Les BDs en vente</a>
-                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique"%>">Les critiques des lecteurs</a>
-                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat"%>">Les annonces de recherche</a>
                     <a class="dropdown-item" href="<%=book_cards_path%>">Toutes les BDs</a>
+                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente"%>">Les BDs en vente</a>
+                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat"%>">Les annonces de recherche</a>
+                    <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique"%>">Les critiques des lecteurs</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -27,8 +27,8 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="<%=new_book_card_path+"?&type=vente"%>">Poster une annonce de vente</a>
-                    <a class="dropdown-item" href="<%=new_book_card_path+"?&type=critique"%>">Poster une critique de BD</a>
                     <a class="dropdown-item" href="<%=new_book_card_path+"?&type=achat"%>">Poster une annonce de recherche</a>
+                    <a class="dropdown-item" href="<%=new_book_card_path+"?&type=critique"%>">Poster une critique de BD</a>
                 </div>
             </li>
         </ul>
@@ -42,9 +42,9 @@
                         Mon compte / Déconnexion
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<%= user_private_messages_path(current_user.id) %>">Mes messages</a>
-                        <a class="dropdown-item" href="<%= user_money_pot_path(current_user.id, current_user.money_pot.id) %>">Ma cagnotte</a>
                         <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
+                        <a class="dropdown-item" href="<%= user_money_pot_path(current_user.id, current_user.money_pot.id) %>">Ma cagnotte</a>
+                        <a class="dropdown-item" href="<%= user_private_messages_path(current_user.id) %>">Mes messages</a>
                         <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="DELETE">Déconnexion</a>
                     </div>
                 </li>
@@ -55,8 +55,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="<%=book_cards_path+"?&user=#{current_user.id}"%>">Toutes mes annonces</a>
                         <a class="dropdown-item" href="<%=book_cards_path+"?&type=vente&user=#{current_user.id}"%>">Mes annonces de ventes</a>
-                        <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique&user=#{current_user.id}"%>">Mes critiques de BD</a>
                         <a class="dropdown-item" href="<%=book_cards_path+"?&type=achat&user=#{current_user.id}"%>">Mes annonces de recherches</a>
+                        <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique&user=#{current_user.id}"%>">Mes critiques de BD</a>
                     </div>
                 </li>
 

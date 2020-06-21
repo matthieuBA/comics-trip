@@ -14,11 +14,7 @@ class PrivateMessagesController < ApplicationController
     if params[:format].nil?
       @private_message = PrivateMessage.new
     else
-      if current_user.id == PrivateMessage.find(params[:format]).recipient_id
-        @send_to = PrivateMessage.find(params[:format]).sender_id
-      else
-        @send_to = PrivateMessage.find(params[:format]).recipient_id
-      end
+      @send_to = params[:format]
       @private_message = PrivateMessage.new
     end
   end
