@@ -35,7 +35,7 @@ nb_i = -1
 bm = 0
 bmm = 1
 bmt = 0
-u = User.create(password: "not_blank", email: "admin@admin.com")
+u = User.create(password: "not_blank", email: "comicstrip@yopmail.com")
 
 def colorg(color = 32)
   printf "\033[#{color}m"
@@ -59,12 +59,13 @@ end
   u_last = User.last
   nicknames = [Faker::DcComics.hero, Faker::DcComics.heroine, Faker::DcComics.villain, Faker::DcComics.name]
   
-  u = User.create(password: "not_blank", email: nicknames.sample+((u_last.id+i).to_s)+"@yopmail.com")
+  u = User.create(password: "not_blank", email: (nicknames.sample).delete(' ')+((u_last.id+i).to_s)+"@yopmail.com")
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
   puts "#{i + 1} users created"
+  puts u.to_yaml
 end
 
 titles.count.times do |o|
