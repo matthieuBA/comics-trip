@@ -15,13 +15,13 @@
 </div>
 
 <div class="mx-auto text-center">
-    <h1>Les BDs les plus vues :</h2>
+    <h1>Les BD les plus vues :</h2>
 </div>
 
 <% @book_cards = BookCard.most_hit(nil, 3) %>
 <%= render 'book_cards/book_cards_view' %>
 <div class="mx-auto text-center">
-    <h1>Plus de BDs :</h2>
+    <h1>Plus de BD :</h2>
     <div class="container landing-buttons">
         <div class="row">
             <div class="col col-auto mx-auto pt-5 mt-5">
