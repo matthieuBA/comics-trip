@@ -1,11 +1,11 @@
 <%= form_tag(google_books_path, :method => "get",   
-    class: 'navbar-form navbar-left') do %>  
-  <div class="input-group">  
-    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
-    <div class="input-group-btn">  
-      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
-    </div>  
-  </div>  
+    class: 'navbar-form navbar-left') do %>
+    <div class="input-group">
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+        <div class="input-group-btn">
+            <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+        </div>
+    </div>
 <% end %>
 <% books = GoogleBooks.search(params[:search]) %>
 
@@ -15,14 +15,8 @@
 <%puts "#"*100 %>
 <% book = books.first %>
 
-<h3>Search Result</h3>  
-    <% unless book.nil? %>  
-    <%= book.title %>    
-    <% end %>
-    <% unless books.nil? %>  
-
-    <% books.each do |result| %>  
-        <%= debug result %><br>  
-    <% end %>
-    <% end %>
-    <%= @parameter %><br>
+<h3>Search Result</h3>
+<% unless book.nil? %>
+<%= book.title %><% end %><% unless books.nil? %><% books.each do |result| %>
+<%= debug result %><br>
+<% end %><% end %><%= @parameter %><br>

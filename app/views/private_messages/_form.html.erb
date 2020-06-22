@@ -16,23 +16,22 @@
     <% end %>
 
     <div class="row">
-    
+
         <div class="container mx-auto">
             <%= form.label :destinataire %>
             <%= form.text_field :recipient_id, class: 'form-control', value:@send_to %>
         </div>
-    
+
         <div class="container mx-auto ">
-        <%= form.label :message %>
-        <%= form.text_area:content, class: 'form-control' %>
+            <%= form.label :message %>
+            <%= form.text_area:content, class: 'form-control' %>
         </div>
-    
 
-<div class="container mx-auto text-center">
-    <%= form.submit 'Envoyer', class:"btn-sm btn-primary" %>
-</div>
 
-</div>
+        <div class="container mx-auto text-center">
+            <%= form.submit 'Envoyer', class:"btn-sm btn-primary" %>
+        </div>
+
+    </div>
 
 <% end %>
-

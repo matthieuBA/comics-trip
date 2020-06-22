@@ -1,27 +1,26 @@
 <% if @book_card.errors.any? %>
-  <div class="alert alert-danger" id="alert_message" role="alert">
-    <p>La création d'une fiche a échoué en raison de :</p>
-      <ul>
-      <% @book_card.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+    <div class="alert alert-danger" id="alert_message" role="alert">
+        <p>La création d'une fiche a échoué en raison de :</p>
+        <ul>
+            <% @book_card.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>
 <div class="container">
-<% if @type=="vente" %>  
-  <h1>Nouvelle annonce de vente</h1>
-  <% end %>
+    <% if @type=="vente" %>
+        <h1>Nouvelle annonce de vente</h1>
+    <% end %>
 
-  <% if @type=="critique" %>  
-  <h1>Nouvelle critique de lecteur</h1>
-  <% end %>
+    <% if @type=="critique" %>
+        <h1>Nouvelle critique de lecteur</h1>
+    <% end %>
 
-  <% if @type=="achat" %>  
-  <h1>Nouvelle annonce de recherche</h1>
-  <% end %>
+    <% if @type=="achat" %>
+        <h1>Nouvelle annonce de recherche</h1>
+    <% end %>
 
-  <%= render 'form', book: @book_card %>
-  <%= link_to 'Retour', book_cards_path %>
-  </div>
-
+    <%= render 'form', book: @book_card %>
+    <%= link_to 'Retour', book_cards_path %>
+</div>

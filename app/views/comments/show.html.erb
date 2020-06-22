@@ -1,12 +1,14 @@
+User :
+<% user = User.find_by(id: @comment.user_id) %>
 
-User : <% user = User.find_by(id: @comment.user_id) %>
-
-      <p>L'auteur: <%= user.nickname %> </p>
-      Comments : <%= @comment.content%><br>
-<% if !current_user.nil? && @comment.user_id == current_user.id%>
-    <div class="container">
-        <%= button_to "Effacer", book_card_comment_path(@comment.book_card_id, @comment.id), method: :delete, class: "btn btn-danger"%>
-        <%= button_to "Editer", edit_book_card_comment_path(id: @comment.id), method: :get, class: "btn btn-info"%>
-    </div>
-    <%end%>
-
+<p>L'auteur:
+    <%= user.nickname %>
+</p>
+Comments :
+<%= @comment.content%><br>
+    <% if !current_user.nil? && @comment.user_id == current_user.id%>
+        <div class="container">
+            <%= button_to "Effacer", book_card_comment_path(@comment.book_card_id, @comment.id), method: :delete, class: "btn btn-danger"%>
+            <%= button_to "Editer", edit_book_card_comment_path(id: @comment.id), method: :get, class: "btn btn-info"%>
+        </div>
+        <%end%>
