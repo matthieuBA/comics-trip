@@ -38,15 +38,12 @@ class BookCardsController < ApplicationController
       puts "=" * 100
       books = GoogleBooks.search("isbn:#{@isbn}", { :country => "fr", :count => 10, :api_key => ENV["GOOGLEBOOK_API"] })
       books.each do |book|
-        # if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
-
         if book.isbn == @isbn
           picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
           @picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
           b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
           @book_isbn = book.isbn
         end
-        # end
       end
       if Book.isbn_exist(@book_isbn) && !@book_isbn.nil?
         @book = Book.find_by(isbn: @book_isbn)
@@ -69,7 +66,6 @@ class BookCardsController < ApplicationController
         flash[:error] = "Le livre portant l'isbn : " + book_card_params[:book_id] + " n'existe pas encore. Merci de créer la fiche du livre associé"
         session[:return_to] ||= request.referer
         redirect_to new_book_path
-        # render "books/new"
       end
     end
   end
