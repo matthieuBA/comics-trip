@@ -14,11 +14,13 @@ class BookCardsController < ApplicationController
     @book_card = BookCard.new
     @books = Book.all
     @type = params[:type]
+    puts "#" * 100
     puts @type
   end
 
   def create
     params[:book_card][:user_id] = current_user.id
+    params[:book_card][:to_sell] = request.referer[request.referer.rindex("type=") + 5, request.referer.length]
     @isbn = book_card_params[:book_id]
     if Book.isbn_exist(@isbn)
       @book = Book.find_by(isbn: @isbn)
