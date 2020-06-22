@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Tu as vendu une BD !</h1>
-    <p>
-      Ton livre vient de trouver un nouveau foyer !
-    </p>
-    <p>
-      Ta cagnotte est désormais de <%= @user_money_pot.money %>
-    </p>
-    <p>
-      Pour accéder à ton espace client et voir ta cagnotte, connecte-toi via : <%= @url %>.
-    </p>
-    <p> À très vite sur https://comics-trip.herokuapp.com/ ! </p>
-  </body>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    </head>
+    <body>
+        <h1>Tu as vendu une BD !</h1>
+        <p>
+            Ton livre vient de trouver un nouveau foyer !
+        </p>
+        <p>
+            Ta cagnotte est désormais de
+            <%= @user_money_pot.money %>
+        </p>
+        <p>
+            Pour accéder à ton espace client et voir ta cagnotte, connecte-toi via :
+            <%= @url %>.
+        </p>
+        <p>
+            À très vite sur https://comics-trip.herokuapp.com/ !
+        </p>
+    </body>
 </html>

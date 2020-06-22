@@ -7,7 +7,7 @@ Follow.destroy_all
 Tag.destroy_all
 Join.destroy_all
 Comment.destroy_all
-
+MoneyPot.destroy_all
 
 conditions = ["parfait", "moyen", "médiocre", "passable"]
 sell = ["vente", "achat", "critique"]
@@ -58,8 +58,8 @@ end
 20.times do |i|
   u_last = User.last
   nicknames = [Faker::DcComics.hero, Faker::DcComics.heroine, Faker::DcComics.villain, Faker::DcComics.name]
-  
-  u = User.create(password: "not_blank", email: (nicknames.sample).delete(' ')+((u_last.id+i).to_s)+"@yopmail.com")
+
+  u = User.create(password: "not_blank", email: (nicknames.sample).delete(" ") + ((u_last.id + i).to_s) + "@yopmail.com")
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u_last, recipient: u, content: Faker::ChuckNorris.fact)
   pm = PrivateMessage.create(sender: u, recipient: u_last, content: Faker::ChuckNorris.fact)
@@ -103,7 +103,7 @@ titles.count.times do |o|
             out << titles[o]
             puts "added #{book.title} from index #{o}"
             rand(1..5).times do |i|
-              c=Comment.create(user_id: User.all.sample.id, book_card_id: BookCard.last.id, content: Faker::Books::Dune.quote)
+              c = Comment.create(user_id: User.all.sample.id, book_card_id: BookCard.last.id, content: Faker::Books::Dune.quote)
             end
           end
         end
@@ -121,9 +121,9 @@ end
 puts "TOTAL = #{(bmt) / 60} minutes remaining or #{(bmt) / 3600} hours"
 p out
 
-nb_user=User.first.id
+nb_user = User.first.id
 15.times do |i|
-  fl = Follow.create(follower_id: nb_user+i, followee_id: nb_user+i+1)
+  fl = Follow.create(follower_id: nb_user + i, followee_id: nb_user + i + 1)
   puts "#{i + 1} follow created"
 end
 

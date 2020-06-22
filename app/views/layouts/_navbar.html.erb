@@ -1,6 +1,4 @@
-<nav
-    class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!--style="margin:0px;"-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="<%= root_path %>"><%= image_tag("logos/logo-comics-trip-flat.png", height: '42px')%></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,8 +30,6 @@
                 </div>
             </li>
         </ul>
-
-
         <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
                 <li class="nav-item dropdown">
@@ -59,7 +55,6 @@
                         <a class="dropdown-item" href="<%=book_cards_path+"?&type=critique&user=#{current_user.id}"%>">Mes critiques de BD</a>
                     </div>
                 </li>
-
             <% else %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

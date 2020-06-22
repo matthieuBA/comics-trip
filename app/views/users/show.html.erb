@@ -1,16 +1,13 @@
 <div class="container">
-    <div
-        class="text-center">
-        <!--style="margin-top: 5rem; text-align: center"-->
+    <div class="text-center">
         <h1>Bienvenue sur votre  profil :</h1>
-        <div
-            class="card mx-auto align-content-center text-center">
-            <!--style="margin-top: 5rem;"-->
+        <div class="card mx-auto align-content-center text-center">
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><%= @user.nickname %></li>
                     <li class="list-group-item">
-                        <a class="btn btn-sm btn-info" href=" <%= user_money_pot_path(current_user.id) %> " role="button">Voir ma cagnotte</a>
+                        <a class="btn btn-sm btn-info" href=" <%= user_money_pot_path(current_user.id, current_user.money_pot.id) %> " role="button">Voir ma cagnotte</a>
+
                     </li>
                     <li class="list-group-item">
                         <a class="btn btn-sm btn-info" href=" <%= edit_user_registration_path %> " role="button">Editer mon profil</a>

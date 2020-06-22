@@ -1,4 +1,4 @@
-require 'open-uri'
+require "open-uri"
 
 class BookCard < ApplicationRecord
   belongs_to :user
@@ -16,7 +16,7 @@ class BookCard < ApplicationRecord
 
   def self.search(search)
     books = Book.where("title ILIKE ? OR author ILIKE ? OR genre ILIKE ? or isbn ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
-  
+
     book_cards = []
 
     books.each do |book|

@@ -1,21 +1,19 @@
 class UserMailer < ApplicationMailer
-
-  default from: 'comics.trip.thp@gmail.com'
+  default from: "comics.trip.thp@gmail.com"
 
   def welcome_email(user)
-
     @user = user
 
-    @url = 'https://comics-trip.herokuapp.com/'
+    @url = "https://comics-trip.herokuapp.com/"
 
-    mail(to: @user.email, subject: 'Bienvenue chez COMICS TRIP !')
+    mail(to: @user.email, subject: "Bienvenue chez COMICS TRIP !")
   end
 
   def order_email_buyer(user, user_money_pot)
     @user = user
     @user_money_pot = user_money_pot
 
-    @url = 'https://comics-trip.herokuapp.com/'
+    @url = "https://comics-trip.herokuapp.com/"
 
     mail(to: @user.email, subject: "Vous venez d'acheter un livre !")
   end
@@ -24,7 +22,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @user_money_pot = user_money_pot
 
-    @url = 'https://comics-trip.herokuapp.com/'
+    @url = "https://comics-trip.herokuapp.com/"
 
     mail(to: @user.email, subject: "Vous venez de vendre un livre !")
   end
