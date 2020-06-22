@@ -1,5 +1,4 @@
 class MoneyPotsController < ApplicationController
-
   def edit
     @book_card = BookCard.find(params[:id])
 

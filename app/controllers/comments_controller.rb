@@ -41,7 +41,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def edit
     comment = Comment.find(params[:id])
 
@@ -51,7 +50,6 @@ class CommentsController < ApplicationController
       flash[:error] = "ce n'est pas votre commentaire #{comment.errors.messages}"
       redirect_to book_card_path(comment.book_card_id)
     end
-
   end
 
   def update
@@ -69,6 +67,4 @@ class CommentsController < ApplicationController
       redirect_to book_card_comment_path(@comment.book_card_id, @comment.id)
     end
   end
-
-
 end

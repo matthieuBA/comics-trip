@@ -8,12 +8,12 @@ module ApplicationHelper
     end
   end
 
-  def search  
-    if params[:search].blank?  
-      redirect_to(root_path, alert: "Empty field!") and return  
-    else  
+  def search
+    if params[:search].blank?
+      redirect_to(root_path, alert: "Empty field!") and return
+    else
       @parameter = params[:search]
-      @results = books = GoogleBooks.search(params[:search]) 
-    end  
+      @results = books = GoogleBooks.search(params[:search])
+    end
   end
 end
