@@ -35,13 +35,45 @@ class BookCardsController < ApplicationController
         render "new"
       end
     else
-      @book = Book.new
-      @book_card = BookCard.new(book_card_params)
-      @books = Book.all
-      flash[:error] = "Le livre portant l'isbn : " + book_card_params[:book_id] + " n'existe pas encore. Merci de créer la fiche du livre associé"
-      session[:return_to] ||= request.referer
-      redirect_to new_book_path
-      # render "books/new"
+      puts "=" * 100
+      books = GoogleBooks.search("isbn:#{@isbn}", { :country => "fr", :count => 10, :api_key => ENV["GOOGLEBOOK_API"] })
+      books.each do |book|
+        # if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
+        puts "#" * 100
+        puts book.isbn
+        puts "#" * 100
+
+        if book.isbn == @isbn
+          picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
+          b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
+          @book_isbn = book.isbn
+          puts "#" * 100
+          puts "created books from google"
+          puts "#" * 100
+        end
+        # end
+      end
+      if Book.isbn_exist(@book_isbn) && !@book_isbn.nil?
+        @book = Book.find_by(isbn: @book_isbn)
+        params[:book_card][:book_id] = @book.id
+        @book_card = BookCard.new(book_card_params)
+        if @book_card.save
+          add_tag
+          flash[:success] = "Merci pour l'ajout! Le livre a été créé avec succès."
+          redirect_to book_card_path(@book_card.id)
+        else
+          flash[:error] = @book_card.errors.messages
+          render "new"
+        end
+      else
+        @book = Book.new
+        @book_card = BookCard.new(book_card_params)
+        @books = Book.all
+        flash[:error] = "Le livre portant l'isbn : " + book_card_params[:book_id] + " n'existe pas encore. Merci de créer la fiche du livre associé"
+        session[:return_to] ||= request.referer
+        redirect_to new_book_path
+        # render "books/new"
+      end
     end
   end
 

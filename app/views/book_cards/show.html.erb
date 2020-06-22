@@ -18,7 +18,7 @@
                         <% if !@book_card.book_picture_seed.nil? %>
                             <img class="card-img-top md-4" src="<%= @book_card.book_picture_seed[0...-1]+"0" %>" alt="Card image cap"/>
                         <% end %>
-                        <% if @book_card.book_picture_seed.nil? %>
+                        <% if @book_card.book_picture_seed.nil? && !@book_card.book_picture.present? %>
                             <img class="card-img-top md-4" src="<%= url_for(@book_card.book_picture.variant(resize: "600x600")) %>" alt=" Card image cap"/>
                         <% end %>
 
