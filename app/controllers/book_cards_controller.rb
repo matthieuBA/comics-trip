@@ -84,7 +84,7 @@ class BookCardsController < ApplicationController
       elsif params[:type] == "vente"
         type = "des annonces de ventes"
       elsif params[:type] == "critique"
-        type = "des critques"
+        type = "des critiques"
       end
       @title = "Liste #{type}"
       @book_cards = BookCard.where(to_sell: params[:type]).page(params[:page]).per(20)
