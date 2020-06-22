@@ -6,10 +6,10 @@
 
             <div class="card dark col-4 views">
 
-                <% if !book_card.book_picture_seed.nil? %>
+                <% if !book_card.book_picture_seed.nil? && !book_card.book_picture.attached? %>
                     <img class="card-img-top img-views mx-auto" src=" <%= book_card.book_picture_seed %> " alt="Card image cap"/>
                 <% end %>
-                <% if book_card.book_picture_seed.nil? %>
+                <% if book_card.book_picture.attached? %>
                     <img class="card-img-top img-views mx-auto" src="<%= url_for(book_card.book_picture.variant(resize: "300x300")) %>" alt=" Card image cap"/>
                 <% end %>
                 <div class="card-body body-views pb-5">
