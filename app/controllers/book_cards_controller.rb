@@ -39,23 +39,20 @@ class BookCardsController < ApplicationController
       books = GoogleBooks.search("isbn:#{@isbn}", { :country => "fr", :count => 10, :api_key => ENV["GOOGLEBOOK_API"] })
       books.each do |book|
         # if book.categories.downcase.include?("comic book") || book.categories.downcase.include?("comic strip") || book.categories.downcase.include?("graphic novel") || book.categories.downcase.include?("bande dessiné")
-        puts "#" * 100
-        puts book.isbn
-        puts "#" * 100
 
         if book.isbn == @isbn
           picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
+          @picture = "https://books.google.com/books/content?id=#{book.id}&printsec=frontcover&img=1&zoom=0"
           b = Book.create(title: book.title, author: book.authors, genre: book.categories, isbn: book.isbn, picture: picture, abstract: book.description, extract: book.description)
           @book_isbn = book.isbn
-          puts "#" * 100
-          puts "created books from google"
-          puts "#" * 100
         end
         # end
       end
       if Book.isbn_exist(@book_isbn) && !@book_isbn.nil?
         @book = Book.find_by(isbn: @book_isbn)
         params[:book_card][:book_id] = @book.id
+        params[:book_card][:book_picture_seed] = @picture
+        book_card_params[:book_picture_seed] = @picture
         @book_card = BookCard.new(book_card_params)
         if @book_card.save
           add_tag
@@ -163,7 +160,7 @@ class BookCardsController < ApplicationController
   private
 
   def book_card_params
-    params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :review)
+    params.require(:book_card).permit(:user_id, :book_id, :price, :to_sell, :book_condition, :book_picture, :book_picture_seed, :review)
   end
 
   def add_tag

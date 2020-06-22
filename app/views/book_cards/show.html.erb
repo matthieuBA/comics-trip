@@ -15,10 +15,10 @@
                 </div>
                 <div class="col-md-12">
                     <div class="product col-md-4">
-                        <% if !@book_card.book_picture_seed.nil? %>
+                        <% if !@book_card.book_picture_seed.nil? && !@book_card.book_picture.attached? %>
                             <img class="card-img-top md-4" src="<%= @book_card.book_picture_seed[0...-1]+"0" %>" alt="Card image cap"/>
                         <% end %>
-                        <% if @book_card.book_picture_seed.nil? && !@book_card.book_picture.present? %>
+                        <% if @book_card.book_picture.attached? %>
                             <img class="card-img-top md-4" src="<%= url_for(@book_card.book_picture.variant(resize: "600x600")) %>" alt=" Card image cap"/>
                         <% end %>
 
@@ -44,6 +44,7 @@
                                     <div class="product-price">€
                                         <%= @book_card.price %></div>
                                 <% end %>
+                                <%= button_to "Voir la fiche du livre", book_path(@book.id), method: :get, class: "btn btn-info"%>
 
                                 <% if !current_user.nil? && @book_card.user_id != current_user.id && @book_card.to_sell == "vente" %>
                                     <%= button_to "Acheter avec la cagnotte", edit_user_money_pot_path(current_user.id), method: :get, class: "btn btn-danger"%>
