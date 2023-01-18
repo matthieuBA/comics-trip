@@ -157,7 +157,7 @@ GEM
     punching_bag (0.7.0)
       railties (>= 3.2)
       voight_kampff (>= 1.0)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.3)
